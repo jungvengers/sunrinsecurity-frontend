@@ -1,0 +1,9 @@
+html,
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background: #f7f7f7;
+}
