@@ -13,7 +13,7 @@ const Login = ({ loginState, login }) => {
     const handleChange = (newValue, setValue) => setValue(newValue);
     const handleSubmit = () => login({ username, password });
 
-    if (localStorage.getItem('accessToken')) history.push('/admin');
+    if (localStorage.getItem('accessToken')) history.push('/');
 
     return (
         <div className="Login">
