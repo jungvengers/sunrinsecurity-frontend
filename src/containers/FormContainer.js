@@ -6,8 +6,9 @@ import {
     addParticipant,
     addClub,
     addKind,
+    addImageFile,
     changeContent,
-    addImage,
+    uploadArticleAsync,
 } from '../store/actions/formAction';
 
 const FormContainer = ({
@@ -16,13 +17,14 @@ const FormContainer = ({
     clubs,
     kinds,
     content,
-    uploadedImages,
+    imageFiles,
     toggleCategory,
     addParticipant,
     addClub,
     addKind,
+    addImageFile,
     changeContent,
-    addImage,
+    uploadArticleAsync,
 }) => {
     return (
         <Form
@@ -31,13 +33,14 @@ const FormContainer = ({
             clubs={clubs}
             kinds={kinds}
             content={content}
-            uploadedImages={uploadedImages}
+            imageFiles={imageFiles}
             toggleCategory={toggleCategory}
             addParticipant={addParticipant}
             addClub={addClub}
             addKind={addKind}
+            addImageFile={addImageFile}
             changeContent={changeContent}
-            addImage={addImage}
+            uploadArticleAsync={uploadArticleAsync}
         />
     );
 };
@@ -50,8 +53,16 @@ export default connect(
         clubs: form.clubs,
         kinds: form.kinds,
         content: form.content,
-        uploadedImages: form.uploadedImages,
+        imageFiles: form.imageFiles,
     }),
     // mapDispatchToProps
-    { toggleCategory, addParticipant, addClub, addKind, changeContent, addImage }
+    {
+        toggleCategory,
+        addParticipant,
+        addClub,
+        addKind,
+        addImageFile,
+        changeContent,
+        uploadArticleAsync,
+    }
 )(FormContainer);
