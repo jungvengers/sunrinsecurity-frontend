@@ -1,18 +1,8 @@
 import React from 'react';
-import WysiwygEditor from './WysiwygEditor';
 
 import './InputForm.scss';
 
-const InputForm = ({
-    content,
-    uploadedImages,
-    toggleCategory,
-    addParticipant,
-    addClub,
-    addKind,
-    changeContent,
-    addImage,
-}) => {
+const InputForm = ({ toggleIsContestWork, addParticipant, addClub, addKind, changeContent }) => {
     const handleKeyPress = (e, setState) => {
         if (e.target.value === '' || e.target.value === ' ') return;
         if (e.key === 'Enter') {
@@ -27,36 +17,35 @@ const InputForm = ({
         <div className="InputForm">
             <input
                 type="text"
-                className="participants"
+                className="InputForm-participants"
                 placeholder="참여자"
                 onKeyPress={(e) => handleKeyPress(e, addParticipant)}
             />
             <input
                 type="text"
-                className="clubs"
+                className="InputForm-clubs"
                 placeholder="소속"
                 onKeyPress={(e) => handleKeyPress(e, addClub)}
             />
             <input
                 type="text"
-                className="kinds"
+                className="InputForm-kinds"
                 placeholder="분야"
                 onKeyPress={(e) => handleKeyPress(e, addKind)}
             />
             <select
                 name="category"
-                className="category"
-                onChange={(e) => handleChange(e.target.value === 'true', toggleCategory)}>
-                <option value={null}>카테고리 선택</option>
+                className="InputForm-category"
+                onChange={(e) => handleChange(e.target.value === 'true', toggleIsContestWork)}>
+                <option value={null}>카테고리 선택</option> //TODO 카테고리 이름 재구성
                 <option value={true}>대회 실적</option>
                 <option value={false}>개인 프로젝트</option>
             </select>
-            <WysiwygEditor
-                content={content}
-                uploadedImages={uploadedImages}
-                changeContent={changeContent}
-                addImage={addImage}
-            />
+            <textarea
+                className="InputForm-content"
+                cols="30"
+                rows="10"
+                onChange={(e) => changeContent(e.target.value)}></textarea>
         </div>
     );
 };

@@ -1,0 +1,34 @@
+.ImageForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border: 2px solid #f2f2f2;
+    min-width: 200px;
+    & > p {
+        margin: 8px 0 0 0;
+        font-size: 1.2em;
+    }
+    .ImageForm-file-input {
+        margin: 10px 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 0.7em;
+    }
+    .ImageForm-file-input::-webkit-file-upload-button {
+        border: none;
+        padding: 5px 12px;
+        margin-left: 10px;
+        background: #ececed;
+        color: #000;
+        font-size: 1em !important;
+        transition: all 0.3s;
+        outline: none;
+        &:hover {
+            background: #5e69fb;
+            color: #fff;
+        }
+    }
+}

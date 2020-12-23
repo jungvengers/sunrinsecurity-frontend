@@ -2,42 +2,45 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form/Form';
 import {
-    toggleCategory,
+    toggleIsContestWork,
     addParticipant,
     addClub,
     addKind,
+    addImageFile,
     changeContent,
-    addImage,
+    uploadArticleAsync,
 } from '../store/actions/formAction';
 
 const FormContainer = ({
-    category,
+    isContestWork,
     participants,
     clubs,
     kinds,
     content,
-    uploadedImages,
-    toggleCategory,
+    imageFiles,
+    toggleIsContestWork,
     addParticipant,
     addClub,
     addKind,
+    addImageFile,
     changeContent,
-    addImage,
+    uploadArticleAsync,
 }) => {
     return (
         <Form
-            category={category}
+            isContestWork={isContestWork}
             participants={participants}
             clubs={clubs}
             kinds={kinds}
             content={content}
-            uploadedImages={uploadedImages}
-            toggleCategory={toggleCategory}
+            imageFiles={imageFiles}
+            toggleIsContestWork={toggleIsContestWork}
             addParticipant={addParticipant}
             addClub={addClub}
             addKind={addKind}
+            addImageFile={addImageFile}
             changeContent={changeContent}
-            addImage={addImage}
+            uploadArticleAsync={uploadArticleAsync}
         />
     );
 };
@@ -45,13 +48,21 @@ const FormContainer = ({
 export default connect(
     // mapStateToProps
     ({ form }) => ({
-        category: form.category,
+        isContestWork: form.isContestWork,
         participants: form.participants,
         clubs: form.clubs,
         kinds: form.kinds,
         content: form.content,
-        uploadedImages: form.uploadedImages,
+        imageFiles: form.imageFiles,
     }),
     // mapDispatchToProps
-    { toggleCategory, addParticipant, addClub, addKind, changeContent, addImage }
+    {
+        toggleIsContestWork,
+        addParticipant,
+        addClub,
+        addKind,
+        addImageFile,
+        changeContent,
+        uploadArticleAsync,
+    }
 )(FormContainer);

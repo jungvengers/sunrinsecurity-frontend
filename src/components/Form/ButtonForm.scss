@@ -1,7 +1,7 @@
 .ButtonForm {
-    text-align: center;
-    input {
-        width: 47%;
+    text-align: right;
+    & > input {
+        width: 100px;
         padding: 10px 0;
         transition: all 0.3s;
         margin: 0 4px;
@@ -9,7 +9,7 @@
         font-size: 1.1em;
         outline: none;
     }
-    .cancel {
+    .ButtonForm-cancel {
         border: 1px solid #e93956;
         background: #e93956;
         &:hover {
@@ -17,7 +17,7 @@
             background: #c22942;
         }
     }
-    .save {
+    .ButtonForm-save {
         border: 1px solid #56a845;
         background: #56a845;
         &:hover {
