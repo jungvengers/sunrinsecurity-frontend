@@ -1,71 +1,46 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { convertToRaw } from 'draft-js';
-import draftToHtml from 'draftjs-to-html';
-import axios from 'axios';
 
-import { ARTICLE_API_URL, IMAGE_API_URL } from '../../config/config';
+import { formValidation } from '../../lib/validationCheck';
 
 import './ButtonForm.scss';
 
-const ButtonForm = ({ category, participants, clubs, kinds, content, uploadedImages }) => {
+const ButtonForm = ({
+    isContestWork,
+    participants,
+    clubs,
+    kinds,
+    content,
+    imageFiles,
+    uploadArticleAsync,
+}) => {
     const history = useHistory();
 
-    const onPostUpload = async () => {
-        console.log(await onFileUpload());
-        console.log(category, participants, clubs, kinds);
-        const headers = {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-            },
-        };
-        const result = await Promise.all(
-            uploadedImages.map(async (image) => {
-                const formData = new FormData();
-                formData.append('attachment', image);
-
-                return await axios.post(IMAGE_API_URL, formData, headers).then((res) => res.data.filename);
-            })
-        );
-
+    const handleClick = async () => {
         const data = {
-            isContestWork: category,
-            participants: participants,
-            clubs: clubs,
-            content: draftToHtml(convertToRaw(content.getCurrentContent())),
-            kinds: kinds,
+            isContestWork,
+            participants,
+            clubs,
+            content,
+            kinds,
+            imageFiles,
         };
 
-        // axios
-        //     .post(ARTICLE_API_URL, data, headers)
-        //     .then((res) => history.push('/'))
-        //     .catch((err) => console.dir(err));
+        if (formValidation(data)) {
+            uploadArticleAsync(data);
+        } else {
+            alert('모든 양식을 채워주세요.');
+        }
     };
-
-    const onFileUpload = async () => {
-        const headers = {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-            },
-        };
-        console.log(uploadedImages);
-        console.log(draftToHtml(convertToRaw(content.getCurrentContent())));
-        // const a = await Promise.all(
-        //     uploadedImages.map(async (image) => {
-        //         const formData = new FormData();
-        //         formData.append('attachment', image);
-
-        //         return await axios.post(IMAGE_API_URL, formData, headers).then((res) => res.data.filename);
-        //     })
-        // );
-        // console.log(a);
-    };
-
     return (
         <div className="ButtonForm">
-            <input type="button" className="cancel" value="취소" onClick={() => history.push('/admin')} />
-            <input type="button" className="save" value="저장" onClick={onPostUpload} />
-            <input type="button" value="check" onClick={onFileUpload} />
+            <input
+                type="button"
+                className="ButtonForm-cancel"
+                value="취소"
+                onClick={() => history.push('/')}
+            />
+            <input type="button" className="ButtonForm-save" value="저장" onClick={handleClick} />
         </div>
     );
 };
