@@ -6,21 +6,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .section {
+    .PreviewForm-section {
         width: 100%;
         text-align: center;
         margin: 20px 0;
-        p {
+        & > p {
             margin: 8px 0;
             font-size: 1.2em;
         }
-        .preview-data {
+        .PreviewForm-preview-data {
             width: 80%;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            span {
+            & > span {
                 margin: 0 5px;
             }
         }
