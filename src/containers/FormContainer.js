@@ -1,7 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form/Form';
-import { toggleCategory, addParticipant, addClub, addKind, changeContent, addImage } from '../modules/form';
+import {
+    toggleCategory,
+    addParticipant,
+    addClub,
+    addKind,
+    changeContent,
+    addImage,
+} from '../store/actions/formAction';
 
 const FormContainer = ({
     category,
