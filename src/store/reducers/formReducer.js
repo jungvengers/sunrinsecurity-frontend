@@ -4,7 +4,7 @@ import * as actions from '../actions/formAction';
 import { reducerUtils } from '../../lib/asyncUtils';
 
 const initialState = {
-    category: null,
+    isContestWork: null,
     participants: [],
     clubs: [],
     kinds: [],
@@ -15,7 +15,7 @@ const initialState = {
 
 const form = handleActions(
     {
-        [actions.TOGGLE_CATEGORY]: (state, action) => ({ ...state, category: action.payload }),
+        [actions.TOGGLE_IS_CONTEST_WORK]: (state, action) => ({ ...state, isContestWork: action.payload }),
         [actions.ADD_PARTICIPANT]: (state, action) => ({
             ...state,
             participants: state.participants.concat(action.payload),

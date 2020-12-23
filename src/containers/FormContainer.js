@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form/Form';
 import {
-    toggleCategory,
+    toggleIsContestWork,
     addParticipant,
     addClub,
     addKind,
@@ -12,13 +12,13 @@ import {
 } from '../store/actions/formAction';
 
 const FormContainer = ({
-    category,
+    isContestWork,
     participants,
     clubs,
     kinds,
     content,
     imageFiles,
-    toggleCategory,
+    toggleIsContestWork,
     addParticipant,
     addClub,
     addKind,
@@ -28,13 +28,13 @@ const FormContainer = ({
 }) => {
     return (
         <Form
-            category={category}
+            isContestWork={isContestWork}
             participants={participants}
             clubs={clubs}
             kinds={kinds}
             content={content}
             imageFiles={imageFiles}
-            toggleCategory={toggleCategory}
+            toggleIsContestWork={toggleIsContestWork}
             addParticipant={addParticipant}
             addClub={addClub}
             addKind={addKind}
@@ -48,7 +48,7 @@ const FormContainer = ({
 export default connect(
     // mapStateToProps
     ({ form }) => ({
-        category: form.category,
+        isContestWork: form.isContestWork,
         participants: form.participants,
         clubs: form.clubs,
         kinds: form.kinds,
@@ -57,7 +57,7 @@ export default connect(
     }),
     // mapDispatchToProps
     {
-        toggleCategory,
+        toggleIsContestWork,
         addParticipant,
         addClub,
         addKind,
