@@ -1,14 +1,16 @@
 import { handleActions } from 'redux-actions';
 
 import * as actions from '../actions/formAction';
+import { reducerUtils } from '../../lib/asyncUtils';
 
 const initialState = {
     category: null,
     participants: [],
     clubs: [],
     kinds: [],
-    content: null,
-    uploadedImages: [],
+    content: '',
+    imageFiles: [],
+    uploadArticle: reducerUtils.initial(),
 };
 
 const form = handleActions(
@@ -26,13 +28,26 @@ const form = handleActions(
             ...state,
             kinds: state.kinds.concat(action.payload),
         }),
+        [actions.ADD_IMAGE_FILE]: (state, action) => ({
+            ...state,
+            imageFiles: action.payload,
+        }),
         [actions.CHANGE_CONTENT]: (state, action) => ({
             ...state,
             content: action.payload,
         }),
-        [actions.ADD_IMAGE]: (state, action) => ({
+        // 글 업로드
+        [actions.UPLOAD_ARTICLE_LOADING]: (state, action) => ({
             ...state,
-            uploadedImages: state.uploadedImages.concat(action.payload),
+            uploadArticle: reducerUtils.loading(),
+        }),
+        [actions.UPLOAD_ARTICLE_SUCCESS]: (state, action) => ({
+            ...state,
+            uploadArticle: reducerUtils.success(action.payload),
+        }),
+        [actions.UPLOAD_ARTICLE_ERROR]: (state, action) => ({
+            ...state,
+            uploadArticle: reducerUtils.error(action.payload),
         }),
     },
     initialState
