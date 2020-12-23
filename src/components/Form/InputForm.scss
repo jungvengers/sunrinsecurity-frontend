@@ -7,7 +7,7 @@
     margin-bottom: 7px;
     border: 2px solid #f2f2f2;
     min-width: 700px;
-    & * {
+    & > * {
         height: 3rem;
         font-size: 1.3rem;
         padding-left: 20px;
@@ -17,7 +17,7 @@
         background: #f7f7f7;
         outline: none;
     }
-    input {
+    & > input {
         width: 44%;
     }
     .InputForm-category {
