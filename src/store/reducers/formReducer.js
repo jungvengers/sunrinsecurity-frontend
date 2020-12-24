@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 
 import * as actions from '../actions/formAction';
-import { reducerUtils } from '../../lib/asyncUtils';
+import { reducerUtils } from '../../utils/lib/asyncUtils';
 
 const initialState = {
     isContestWork: null,

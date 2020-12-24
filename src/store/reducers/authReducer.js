@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { reducerUtils } from '../../lib/asyncUtils';
+import { reducerUtils } from '../../utils/lib/asyncUtils';
 import * as actions from '../actions/authAction';
 
 const initialState = {

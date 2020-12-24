@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
 import * as actions from '../actions/formAction';
-import * as formAPI from '../../lib/api/form';
+import * as formAPI from '../../utils/api/form';
 
 export function* uploadArticleSaga(action) {
     try {

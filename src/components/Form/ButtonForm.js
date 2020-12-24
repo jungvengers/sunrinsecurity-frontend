@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 
-import { formValidation } from '../../lib/validationCheck';
+import { formValidation } from '../../utils/lib/validationCheck';
 
 import './ButtonForm.scss';
 
