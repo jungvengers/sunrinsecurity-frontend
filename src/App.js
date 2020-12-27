@@ -7,6 +7,7 @@ import LoginContainer from './containers/LoginContainer';
 import RegisterContainer from './containers/RegisterContainer';
 
 import './App.css';
+import 'antd/dist/antd.css';
 
 const App = () => {
     return (
