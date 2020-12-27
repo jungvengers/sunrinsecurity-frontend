@@ -9,6 +9,7 @@ export const ADD_PARTICIPANT = 'form/ADD_PARTICIPANT';
 export const ADD_CLUB = 'form/ADD_CLUB';
 export const ADD_KIND = 'form/ADD_KIND';
 export const ADD_IMAGE_FILE = 'form/ADD_IMAGE_FILE';
+export const REMOVE_IMAGE_FILE = 'form/REMOVE_IMAGE_FILE';
 export const ADD_IMAGE_NAME = 'form/ADD_IMAGE_NAME';
 export const CHANGE_CONTENT = 'form/CHANGE_CONTENT';
 
@@ -18,4 +19,5 @@ export const addParticipant = createAction(ADD_PARTICIPANT, (input) => input);
 export const addClub = createAction(ADD_CLUB, (input) => input);
 export const addKind = createAction(ADD_KIND, (input) => input);
 export const addImageFile = createAction(ADD_IMAGE_FILE, (input) => input);
+export const removeImageFile = createAction(REMOVE_IMAGE_FILE, (input) => input);
 export const changeContent = createAction(CHANGE_CONTENT, (input) => input);

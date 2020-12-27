@@ -7,6 +7,7 @@ import {
     addClub,
     addKind,
     addImageFile,
+    removeImageFile,
     changeContent,
     uploadArticleAsync,
 } from '../store/actions/formAction';
@@ -23,6 +24,7 @@ const FormContainer = ({
     addClub,
     addKind,
     addImageFile,
+    removeImageFile,
     changeContent,
     uploadArticleAsync,
 }) => {
@@ -39,6 +41,7 @@ const FormContainer = ({
             addClub={addClub}
             addKind={addKind}
             addImageFile={addImageFile}
+            removeImageFile={removeImageFile}
             changeContent={changeContent}
             uploadArticleAsync={uploadArticleAsync}
         />
@@ -62,6 +65,7 @@ export default connect(
         addClub,
         addKind,
         addImageFile,
+        removeImageFile,
         changeContent,
         uploadArticleAsync,
     }

@@ -26,11 +26,15 @@ const form = handleActions(
         }),
         [actions.ADD_KIND]: (state, action) => ({
             ...state,
-            kinds: state.kinds.concat(action.payload),
+            kinds: action.payload,
         }),
         [actions.ADD_IMAGE_FILE]: (state, action) => ({
             ...state,
-            imageFiles: action.payload,
+            imageFiles: state.imageFiles.concat(action.payload),
+        }),
+        [actions.REMOVE_IMAGE_FILE]: (state, action) => ({
+            ...state,
+            imageFiles: state.imageFiles.filter((imageFile) => imageFile.name != action.payload.name),
         }),
         [actions.CHANGE_CONTENT]: (state, action) => ({
             ...state,
