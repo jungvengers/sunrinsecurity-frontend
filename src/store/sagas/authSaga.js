@@ -1,14 +1,16 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery, getContext } from 'redux-saga/effects';
 
 import * as actions from '../actions/authAction';
 import * as authAPI from '../../utils/api/auth';
 
 function* loginSaga(action) {
     try {
+        const history = yield getContext('history');
         const res = yield call(authAPI.login, action.payload);
-        localStorage.setItem('accessToken', res.data.token);
-        if (res) window.location = '/';
+        yield put({ type: actions.INIT_USERNAME, payload: res.data.user.username });
         yield put({ type: actions.LOGIN_SUCCESS, error: false, payload: res });
+        yield history.push('/');
+        yield localStorage.setItem('accessToken', res.data.token);
     } catch (e) {
         yield put({
             type: actions.LOGIN_ERROR,
@@ -20,9 +22,10 @@ function* loginSaga(action) {
 
 function* registerSaga(action) {
     try {
+        const history = yield getContext('history');
         const res = yield call(authAPI.register, action.payload);
-        if (res) window.location = '/login';
         yield put({ type: actions.REGISTER_SUCCESS, error: false, payload: res });
+        yield history.push('/login');
     } catch (e) {
         yield put({
             type: actions.REGISTER_ERROR,
