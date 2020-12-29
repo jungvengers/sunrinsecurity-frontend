@@ -11,6 +11,7 @@ function* loginSaga(action) {
         yield put({ type: actions.LOGIN_SUCCESS, error: false, payload: res });
         yield history.push('/');
         yield localStorage.setItem('accessToken', res.data.token);
+        yield localStorage.setItem('username', res.data.user.username);
     } catch (e) {
         yield put({
             type: actions.LOGIN_ERROR,
