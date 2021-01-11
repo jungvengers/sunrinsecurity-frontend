@@ -1,16 +1,17 @@
-.LargeViewArticle {
-    .LargeViewArticle-images-few {
+.ArticleItem {
+    width: 100%;
+    .ArticleItem-images-few {
         width: 100%;
         margin: 0 auto;
-        .LargeViewArticle-image-wrapper {
+        .ArticleItem-image-wrapper {
             display: none;
             &:nth-child(1) {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 width: 100%;
-                // height: auto;
-                height: 700px;
+                height: 60vh;
+                min-height: 400px;
                 overflow: hidden;
             }
             img {
@@ -22,13 +23,13 @@
             }
         }
     }
-    .LargeViewArticle-images-lot {
+    .ArticleItem-images-lot {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         width: 100%;
         margin: 0 auto;
-        .LargeViewArticle-image-wrapper {
+        .ArticleItem-image-wrapper {
             display: none;
             &:nth-child(1),
             &:nth-child(2),
@@ -38,7 +39,7 @@
                 justify-content: center;
                 align-items: center;
                 width: 49%;
-                height: 350px;
+                height: 35vh;
                 overflow: hidden;
                 background: #000;
                 margin: 1px;
@@ -53,7 +54,7 @@
             }
         }
     }
-    .LargeViewArticle-content {
+    .ArticleItem-content {
         p {
             padding: 10px;
             margin: 5px 2px;
@@ -61,19 +62,19 @@
             font-size: 1.1rem;
         }
     }
-    .LargeViewArticle-detail-info {
+    .ArticleItem-detail-info {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        margin: 50px 0;
+        margin: 40px 0;
         & > div {
             text-align: center;
         }
-        .LargeViewArticle-participants {
+        .ArticleItem-participants {
         }
-        .LargeViewArticle-kinds {
+        .ArticleItem-kinds {
         }
-        .LargeViewArticle-isContestWork {
+        .ArticleItem-isContestWork {
         }
     }
 }
