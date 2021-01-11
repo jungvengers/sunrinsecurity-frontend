@@ -1,0 +1,17 @@
+.ArticleList {
+    width: 70%;
+    min-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .infinite-scroll-component__outerdiv {
+        width: 100%;
+        .infiniteScrollWrapper {
+            width: 100%;
+            .ArticleItem {
+                width: 100%;
+            }
+        }
+    }
+}
