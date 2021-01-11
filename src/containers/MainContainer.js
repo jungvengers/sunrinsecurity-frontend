@@ -1,10 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Articles from '../components/Main/Articles';
-import { addArticle, removeArticle } from '../modules/article';
+import Main from '../components/Main/Main';
+import { readArticleAsync, readMoreArticleAsync, deleteArticleAsync } from '../store/actions/articleAction';
 
-const MainContainer = ({ articles, addArticle, removeArticle }) => {
-    return <Articles articles={articles} addArticle={addArticle} removeArticle={removeArticle} />;
+const MainContainer = ({ articles, readArticleAsync, readMoreArticleAsync, deleteArticleAsync }) => {
+    return (
+        <Main
+            articles={articles}
+            readArticle={readArticleAsync}
+            readMoreArticle={readMoreArticleAsync}
+            deleteArticle={deleteArticleAsync}
+        />
+    );
 };
 
 export default connect(
@@ -13,5 +20,5 @@ export default connect(
         articles: article.articles,
     }),
     // mapDispatchToProps
-    { addArticle, removeArticle }
+    { readArticleAsync, readMoreArticleAsync, deleteArticleAsync }
 )(MainContainer);
