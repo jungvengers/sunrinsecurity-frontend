@@ -4,17 +4,9 @@ import { Modal, Button } from 'antd';
 import { formValidation } from '../../utils/lib/validationCheck';
 import history from '../../utils/lib/history';
 
-import './ButtonForm.scss';
+import './Submit.scss';
 
-const ButtonForm = ({
-    isContestWork,
-    participants,
-    clubs,
-    kinds,
-    content,
-    imageFiles,
-    uploadArticleAsync,
-}) => {
+const Buttons = ({ isContestWork, participants, clubs, kinds, content, imageFiles, uploadArticleAsync }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const handleClose = () => setIsModalVisible(false);
@@ -38,19 +30,20 @@ const ButtonForm = ({
             });
         }
     };
+
     return (
-        <div className="ButtonForm">
+        <div className="Buttons">
             <Modal title="양식 미작성" visible={isModalVisible} onOk={handleClose} onCancel={handleClose}>
                 <p>모든 양식을 채워주세요.</p>
             </Modal>
-            <Button type="primary" onClick={handleClick}>
-                저장
-            </Button>
             <Button type="primary" onClick={() => history.push('/')} danger>
                 취소
+            </Button>
+            <Button type="primary" onClick={handleClick}>
+                저장
             </Button>
         </div>
     );
 };
 
-export default ButtonForm;
+export default Buttons;
