@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Form, Modal, Upload, Radio, Checkbox, Input, Button, message } from 'antd';
+import { Form, Modal, Upload, Radio, Checkbox, Input, Button, message, Space } from 'antd';
 
-import { formValidation } from '../../utils/lib/validationCheck';
+import { formValidation } from '../../../utils/lib/validationCheck';
 
-import { InfoCircleOutlined, UserOutlined, InboxOutlined, UploadOutlined } from '@ant-design/icons';
+import {
+    InfoCircleOutlined,
+    UserOutlined,
+    InboxOutlined,
+    PlusOutlined,
+    MinusCircleOutlined,
+} from '@ant-design/icons';
 
-import './InputForm.scss';
+import './Input.scss';
 
-const InputForm = ({
+const Inputs = ({
     imageFiles,
     toggleIsContestWork,
     addParticipant,
@@ -54,10 +60,10 @@ const InputForm = ({
     };
 
     return (
-        <Form layout="vertical" className="InputForm">
+        <Form layout="vertical" className="Input">
             <Form.Item label="참여자" rules={[{ required: true, message: 'Please input your username!' }]}>
                 <Input
-                    placeholder="101XX 김선린"
+                    placeholder="김선린, 이선린, 박선린..."
                     value={participant}
                     onChange={(e) => handleChange(e.target.value, setParticipant)}
                     prefix={<UserOutlined className="site-form-item-icon" />}
@@ -74,11 +80,6 @@ const InputForm = ({
                     <Radio.Button value="TeamLog">TeamLog</Radio.Button>
                     <Radio.Button value="Emotion">Emotion</Radio.Button>
                 </Radio.Group>
-            </Form.Item>
-            <Form.Item>
-                <Button type="primary" onClick={handleClick}>
-                    추가
-                </Button>
             </Form.Item>
             <Form.Item label="분야">
                 <Checkbox.Group options={plainOptions} onChange={(checkValues) => addKind(checkValues)} />
@@ -105,11 +106,38 @@ const InputForm = ({
                     </p>
                 </Dragger>
             </Form.Item>
+            <Form.List name="users">
+                {(fields, { add, remove }) => (
+                    <>
+                        {fields.map((field) => (
+                            <Space key={field.key} style={{ display: 'flex' }} align="baseline">
+                                <Form.Item
+                                    {...field}
+                                    name={[field.name, 'first']}
+                                    fieldKey={[field.fieldKey, 'first']}
+                                    rules={[{ required: true, message: 'Missing first name' }]}>
+                                    <Input placeholder="https://www.youtube.com/..." />
+                                </Form.Item>
+                                <MinusCircleOutlined onClick={() => remove(field.name)} />
+                            </Space>
+                        ))}
+                        <Form.Item>
+                            <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                                Add field
+                            </Button>
+                        </Form.Item>
+                    </>
+                )}
+            </Form.List>
             <Form.Item label="내용">
-                <Input.TextArea rows={4} onChange={(e) => changeContent(e.target.value)} allowClear={true} />
+                <Input.TextArea
+                    autoSize={{ minRows: 8, maxRows: 10 }}
+                    onChange={(e) => changeContent(e.target.value)}
+                    allowClear={true}
+                />
             </Form.Item>
         </Form>
     );
 };
 
-export default InputForm;
+export default Inputs;
