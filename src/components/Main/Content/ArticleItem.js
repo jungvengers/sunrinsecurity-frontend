@@ -3,6 +3,8 @@ import { Image } from 'antd';
 
 import './ArticleItem.scss';
 
+import notFoundImage from '../../../assets/not-found-image.jpg';
+
 const ArticleItem = ({ clubs, content, images, kinds, participants, id, deleteArticle }) => {
     return (
         <div className="ArticleItem">
@@ -10,7 +12,10 @@ const ArticleItem = ({ clubs, content, images, kinds, participants, id, deleteAr
                 <Image.PreviewGroup>
                     {images.map((image, idx) => (
                         <div key={idx} className="ArticleItem-image-wrapper">
-                            <Image src={`https://api.jungvengers.com/media/${image}`} />
+                            <Image
+                                src={`https://api.jungvengers.com/media/${image}`}
+                                fallback={notFoundImage}
+                            />
                         </div>
                     ))}
                 </Image.PreviewGroup>
