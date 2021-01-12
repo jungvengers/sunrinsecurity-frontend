@@ -6,7 +6,7 @@ import history from '../../utils/lib/history';
 
 import './Submit.scss';
 
-const Buttons = ({ isContestWork, participants, clubs, kinds, content, imageFiles, uploadArticleAsync }) => {
+const Submit = ({ isContestWork, participants, clubs, kinds, content, imageFiles, uploadArticleAsync }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const handleClose = () => setIsModalVisible(false);
@@ -32,7 +32,7 @@ const Buttons = ({ isContestWork, participants, clubs, kinds, content, imageFile
     };
 
     return (
-        <div className="Buttons">
+        <div className="Submit">
             <Modal title="양식 미작성" visible={isModalVisible} onOk={handleClose} onCancel={handleClose}>
                 <p>모든 양식을 채워주세요.</p>
             </Modal>
@@ -46,4 +46,4 @@ const Buttons = ({ isContestWork, participants, clubs, kinds, content, imageFile
     );
 };
 
-export default Buttons;
+export default Submit;
