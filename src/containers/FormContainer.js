@@ -8,6 +8,7 @@ import {
     addKind,
     addImageFile,
     removeImageFile,
+    addYoutubeURLs,
     changeContent,
     uploadArticleAsync,
 } from '../store/actions/formAction';
@@ -19,12 +20,14 @@ const FormContainer = ({
     kinds,
     content,
     imageFiles,
+    youtubeURLs,
     toggleIsContestWork,
     addParticipant,
     addClub,
     addKind,
     addImageFile,
     removeImageFile,
+    addYoutubeURLs,
     changeContent,
     uploadArticleAsync,
 }) => {
@@ -36,12 +39,14 @@ const FormContainer = ({
             kinds={kinds}
             content={content}
             imageFiles={imageFiles}
+            youtubeURLs={youtubeURLs}
             toggleIsContestWork={toggleIsContestWork}
             addParticipant={addParticipant}
             addClub={addClub}
             addKind={addKind}
             addImageFile={addImageFile}
             removeImageFile={removeImageFile}
+            addYoutubeURLs={addYoutubeURLs}
             changeContent={changeContent}
             uploadArticleAsync={uploadArticleAsync}
         />
@@ -57,6 +62,7 @@ export default connect(
         kinds: form.kinds,
         content: form.content,
         imageFiles: form.imageFiles,
+        youtubeURLs: form.youtubeURLs,
     }),
     // mapDispatchToProps
     {
@@ -66,6 +72,7 @@ export default connect(
         addKind,
         addImageFile,
         removeImageFile,
+        addYoutubeURLs,
         changeContent,
         uploadArticleAsync,
     }
