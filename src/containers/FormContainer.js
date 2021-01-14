@@ -8,7 +8,7 @@ import {
     addKind,
     addImageFile,
     removeImageFile,
-    addYoutubeURLs,
+    addYoutubeURL,
     changeContent,
     uploadArticleAsync,
 } from '../store/actions/formAction';
@@ -27,7 +27,7 @@ const FormContainer = ({
     addKind,
     addImageFile,
     removeImageFile,
-    addYoutubeURLs,
+    addYoutubeURL,
     changeContent,
     uploadArticleAsync,
 }) => {
@@ -46,7 +46,7 @@ const FormContainer = ({
             addKind={addKind}
             addImageFile={addImageFile}
             removeImageFile={removeImageFile}
-            addYoutubeURLs={addYoutubeURLs}
+            addYoutubeURL={addYoutubeURL}
             changeContent={changeContent}
             uploadArticleAsync={uploadArticleAsync}
         />
@@ -72,7 +72,7 @@ export default connect(
         addKind,
         addImageFile,
         removeImageFile,
-        addYoutubeURLs,
+        addYoutubeURL,
         changeContent,
         uploadArticleAsync,
     }
