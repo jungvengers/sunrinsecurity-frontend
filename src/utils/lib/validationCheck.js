@@ -1,4 +1,4 @@
-const convertToField = (key) => {
+const convertToFieldName = (key) => {
     switch (key) {
         case 'participants':
             return '참여자';
@@ -21,13 +21,13 @@ export const formValidation = (data, valKeys) => {
     for (const [key, value] of Object.entries(data)) {
         if (valKeys.indexOf(key) != -1) {
             if (value === null) {
-                return [false, convertToField(key)];
+                return [false, convertToFieldName(key)];
             } else if (typeof value === 'object') {
-                if (value.length < 1) return [false, convertToField(key)];
+                if (value.length < 1) return [false, convertToFieldName(key)];
             } else if (typeof value === 'string') {
-                if (value === '') return [false, convertToField(key)];
+                if (value === '') return [false, convertToFieldName(key)];
             }
         }
     }
-    return [true];
+    return [true, null];
 };
