@@ -10,6 +10,7 @@ const initialState = {
     kinds: [],
     content: '',
     imageFiles: [],
+    youtubeURLs: [],
     uploadArticle: reducerUtils.initial(),
 };
 
@@ -22,7 +23,7 @@ const form = handleActions(
         }),
         [actions.ADD_CLUB]: (state, action) => ({
             ...state,
-            clubs: state.clubs.concat(action.payload),
+            clubs: action.payload,
         }),
         [actions.ADD_KIND]: (state, action) => ({
             ...state,
@@ -35,6 +36,10 @@ const form = handleActions(
         [actions.REMOVE_IMAGE_FILE]: (state, action) => ({
             ...state,
             imageFiles: state.imageFiles.filter((imageFile) => imageFile.name != action.payload.name),
+        }),
+        [actions.ADD_YOUTUBE_URLS]: (state, action) => ({
+            ...state,
+            youtubeURLs: state.youtubeURLs.concat(action.payload),
         }),
         [actions.CHANGE_CONTENT]: (state, action) => ({
             ...state,
