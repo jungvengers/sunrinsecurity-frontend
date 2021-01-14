@@ -21,7 +21,7 @@ export const splitParticipants = (names) => {
 export const splitYoutubeURLs = (urls) => {
     if (urls.length < 1 || urls[0] == ' ') return [];
 
-    const REGEX = /https:\/\/(www\.youtube.com\/watch\?v=|youtu.be\/)(.*)/;
+    const REGEX = /https:\/\/(www\.youtube.com\/watch\?v=|youtu.be\/)(.*)(&|\?)/;
     const youtubeURLs = urls.split(' ');
     const videoId = [];
 
