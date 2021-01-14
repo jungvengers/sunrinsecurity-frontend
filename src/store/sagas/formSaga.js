@@ -14,6 +14,7 @@ export function* uploadArticleSaga(action) {
             content: action.payload.content,
             kinds: action.payload.kinds,
             images,
+            youtubeURLs: action.payload.youtubeURLs,
         };
         const result = yield call(formAPI.uploadArticle, data);
         yield put({ type: actions.UPLOAD_ARTICLE_SUCCESS, error: false, payload: result });
