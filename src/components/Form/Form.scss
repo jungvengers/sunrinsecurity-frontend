@@ -1,39 +1,18 @@
 .Form {
+    background: #f0f2f5;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 65%;
-    min-width: 930px;
-    margin: 0 auto;
-    & > h2 {
-        margin: 30px 0 20px 0;
-    }
-    & > p {
-        margin: 0 0 20px 0;
-        color: #6b8bcf;
+    width: 100%;
+    .Header {
+        width: 100%;
+        margin-bottom: 40px;
     }
     & > div {
+        width: 50%;
+        min-width: 930px;
         display: flex;
-    }
-    .Form-left {
-        width: 80%;
-        margin: 0 10px;
-        .InputForm {
-            width: 100%;
-        }
-        .ButtonForm {
-            width: 100%;
-        }
-    }
-    .Form-right {
-        width: 20%;
-        margin: 0 10px;
-        .PreviewForm {
-            width: 100%;
-        }
-        .ImageForm {
-            width: 100%;
-        }
+        flex-direction: column;
     }
 }

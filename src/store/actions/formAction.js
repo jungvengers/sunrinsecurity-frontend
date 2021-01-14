@@ -11,6 +11,7 @@ export const ADD_KIND = 'form/ADD_KIND';
 export const ADD_IMAGE_FILE = 'form/ADD_IMAGE_FILE';
 export const REMOVE_IMAGE_FILE = 'form/REMOVE_IMAGE_FILE';
 export const ADD_IMAGE_NAME = 'form/ADD_IMAGE_NAME';
+export const ADD_YOUTUBE_URLS = 'form/YOUTUBE_URLS';
 export const CHANGE_CONTENT = 'form/CHANGE_CONTENT';
 
 export const uploadArticleAsync = createAction(UPLOAD_ARTICLE_LOADING, (input) => input);
@@ -20,4 +21,5 @@ export const addClub = createAction(ADD_CLUB, (input) => input);
 export const addKind = createAction(ADD_KIND, (input) => input);
 export const addImageFile = createAction(ADD_IMAGE_FILE, (input) => input);
 export const removeImageFile = createAction(REMOVE_IMAGE_FILE, (input) => input);
+export const addYoutubeURL = createAction(ADD_YOUTUBE_URLS, (input) => input);
 export const changeContent = createAction(CHANGE_CONTENT, (input) => input);
