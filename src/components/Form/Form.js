@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import InputForm from './InputForm';
-import PreviewForm from './PreviewForm';
-import ButtonForm from './ButtonForm';
+import Header from '../Main/Header/Header';
+import Input from './Input/Input';
+import Submit from './Submit';
 
 import history from '../../utils/lib/history';
 
@@ -15,45 +15,45 @@ const Form = ({
     kinds,
     content,
     imageFiles,
-    uploadArticleAsync,
+    youtubeURLs,
     toggleIsContestWork,
     addParticipant,
     addClub,
     addKind,
     addImageFile,
     removeImageFile,
+    addYoutubeURL,
     changeContent,
+    uploadArticleAsync,
 }) => {
     if (!localStorage.getItem('accessToken')) history.push('/');
     return (
         <div className="Form">
-            <h2>정보보호과 홍보 페이지</h2>
-            <p>게시글 작성 페이지</p>
+            <Header />
             <div>
-                <div className="Form-left">
-                    <InputForm
-                        imageFiles={imageFiles}
-                        toggleIsContestWork={toggleIsContestWork}
-                        addParticipant={addParticipant}
-                        addClub={addClub}
-                        addKind={addKind}
-                        addImageFile={addImageFile}
-                        removeImageFile={removeImageFile}
-                        changeContent={changeContent}
-                    />
-                    <ButtonForm
-                        isContestWork={isContestWork}
-                        participants={participants}
-                        clubs={clubs}
-                        kinds={kinds}
-                        content={content}
-                        imageFiles={imageFiles}
-                        uploadArticleAsync={uploadArticleAsync}
-                    />
-                </div>
-                <div className="Form-right">
-                    <PreviewForm participants={participants} clubs={clubs} kinds={kinds} />
-                </div>
+                <Input
+                    imageFiles={imageFiles}
+                    youtubeURLs={youtubeURLs}
+                    participants={participants}
+                    toggleIsContestWork={toggleIsContestWork}
+                    addClub={addClub}
+                    addKind={addKind}
+                    addImageFile={addImageFile}
+                    removeImageFile={removeImageFile}
+                    changeContent={changeContent}
+                    addParticipant={addParticipant}
+                    addYoutubeURL={addYoutubeURL}
+                />
+                <Submit
+                    isContestWork={isContestWork}
+                    participants={participants}
+                    clubs={clubs}
+                    kinds={kinds}
+                    content={content}
+                    imageFiles={imageFiles}
+                    youtubeURLs={youtubeURLs}
+                    uploadArticleAsync={uploadArticleAsync}
+                />
             </div>
         </div>
     );
