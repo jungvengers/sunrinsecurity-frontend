@@ -21,5 +21,5 @@ export const addClub = createAction(ADD_CLUB, (input) => input);
 export const addKind = createAction(ADD_KIND, (input) => input);
 export const addImageFile = createAction(ADD_IMAGE_FILE, (input) => input);
 export const removeImageFile = createAction(REMOVE_IMAGE_FILE, (input) => input);
-export const addYoutubeURLs = createAction(ADD_YOUTUBE_URLS, (input) => input);
+export const addYoutubeURL = createAction(ADD_YOUTUBE_URLS, (input) => input);
 export const changeContent = createAction(CHANGE_CONTENT, (input) => input);
