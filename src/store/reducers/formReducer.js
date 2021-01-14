@@ -16,10 +16,13 @@ const initialState = {
 
 const form = handleActions(
     {
-        [actions.TOGGLE_IS_CONTEST_WORK]: (state, action) => ({ ...state, isContestWork: action.payload }),
+        [actions.TOGGLE_IS_CONTEST_WORK]: (state, action) => ({
+            ...state,
+            isContestWork: action.payload,
+        }),
         [actions.ADD_PARTICIPANT]: (state, action) => ({
             ...state,
-            participants: state.participants.concat(action.payload),
+            participants: action.payload,
         }),
         [actions.ADD_CLUB]: (state, action) => ({
             ...state,
@@ -39,7 +42,7 @@ const form = handleActions(
         }),
         [actions.ADD_YOUTUBE_URLS]: (state, action) => ({
             ...state,
-            youtubeURLs: state.youtubeURLs.concat(action.payload),
+            youtubeURLs: action.payload,
         }),
         [actions.CHANGE_CONTENT]: (state, action) => ({
             ...state,
