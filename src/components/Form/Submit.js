@@ -18,10 +18,11 @@ const Submit = ({
     uploadArticleAsync,
 }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleClose = () => setIsModalVisible(false);
     const handleCancel = () => history.push('/');
-    const handleClick = async () => {
+    const handleSave = async () => {
         const data = {
             participants: splitParticipants(participants),
             clubs,
@@ -38,6 +39,7 @@ const Submit = ({
             'content',
         ]);
         if (result) {
+            setIsLoading(true);
             uploadArticleAsync(data);
         } else {
             Modal.warning({
@@ -55,7 +57,7 @@ const Submit = ({
             <Button type="primary" onClick={handleCancel} danger>
                 취소
             </Button>
-            <Button type="primary" onClick={handleClick}>
+            <Button type="primary" loading={isLoading} onClick={handleSave}>
                 저장
             </Button>
         </div>
