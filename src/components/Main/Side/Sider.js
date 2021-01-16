@@ -1,6 +1,12 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
-import { TeamOutlined, AppstoreOutlined, StarOutlined } from '@ant-design/icons';
+import {
+    SearchOutlined,
+    CommentOutlined,
+    TeamOutlined,
+    AppstoreOutlined,
+    StarOutlined,
+} from '@ant-design/icons';
 
 const Sider = ({
     handleToggleCategory,
@@ -14,10 +20,18 @@ const Sider = ({
 
     return (
         <Sider width={200} className="site-layout-background">
+            <Menu>
+                <Menu.Item key="1" icon={<SearchOutlined />} style={{ paddingLeft: '24px' }}>
+                    학과 소개
+                </Menu.Item>
+                <Menu.Item key="2" icon={<CommentOutlined />} style={{ paddingLeft: '24px' }}>
+                    학과 소식
+                </Menu.Item>
+            </Menu>
             <Menu mode="inline" onSelect={handleToggleCategory}>
-                <SubMenu key="sub1" icon={<AppstoreOutlined />} title="정보보호과">
-                    <Menu.Item key="true">학과 소개</Menu.Item>
-                    <Menu.Item key="false">학과 소식</Menu.Item>
+                <SubMenu key="sub1" icon={<AppstoreOutlined />} title="실적 종류">
+                    <Menu.Item key="true">교외 실적</Menu.Item>
+                    <Menu.Item key="false">교내 실적</Menu.Item>
                 </SubMenu>
             </Menu>
             <Menu mode="inline" onSelect={handleAddClub} onDeselect={handleDeleteClub} multiple>
