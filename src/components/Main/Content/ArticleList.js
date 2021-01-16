@@ -9,6 +9,7 @@ import './ArticleList.scss';
 const ArticleList = ({ articles, category, clubs, kinds, readArticle, readMoreArticle, deleteArticle }) => {
     const [articlePerPage, setArticlePerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
+    console.log(articles);
     useEffect(() => {
         const queryStringData = {
             articlePerPage,
@@ -50,11 +51,12 @@ const ArticleList = ({ articles, category, clubs, kinds, readArticle, readMoreAr
                                   <ArticleItem
                                       clubs={article.clubs}
                                       content={article.content}
-                                      images={article.images}
+                                      files={article.images}
                                       kinds={article.kinds}
                                       participants={article.participants}
-                                      id={article._id}
+                                      youtubeURLs={article.youtubeURLs}
                                       deleteArticle={deleteArticle}
+                                      id={article._id}
                                   />
                               </Card>
                           );
