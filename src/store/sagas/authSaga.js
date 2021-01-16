@@ -5,11 +5,10 @@ import * as authAPI from '../../utils/api/auth';
 
 function* loginSaga(action) {
     try {
-        const history = yield getContext('history');
         const res = yield call(authAPI.login, action.payload);
         yield put({ type: actions.INIT_USERNAME, payload: res.data.user.username });
         yield put({ type: actions.LOGIN_SUCCESS, error: false, payload: res });
-        yield history.push('/');
+        yield (document.location.pathname = '/');
         yield localStorage.setItem('accessToken', res.data.token);
         yield localStorage.setItem('username', res.data.user.username);
     } catch (e) {
