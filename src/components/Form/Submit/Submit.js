@@ -1,38 +1,22 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 
-import { formValidation } from '../../utils/lib/validationCheck';
-import { splitParticipants, splitYoutubeURLs } from '../../utils/lib/splitString';
-import history from '../../utils/lib/history';
+import { formValidation } from '../../../utils/lib/validationCheck';
+import { splitParticipants, splitYoutubeURLs } from '../../../utils/lib/splitString';
+import history from '../../../utils/lib/history';
 
 import './Submit.scss';
 
-const Submit = ({
-    isContestWork,
-    participants,
-    clubs,
-    kinds,
-    content,
-    imageFiles,
-    youtubeURLs,
-    uploadArticleAsync,
-}) => {
+const Submit = ({ submitData, participants, youtubeURLs, fetchArticle }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClose = () => setIsModalVisible(false);
-    const handleCancel = () => history.push('/');
+    const handleCancel = () => (document.location.pathname = '/');
     const handleSave = async () => {
-        const data = {
-            participants: splitParticipants(participants),
-            clubs,
-            kinds,
-            isContestWork,
-            imageFiles,
-            youtubeURLs: splitYoutubeURLs(youtubeURLs),
-            content,
-        };
-        const [result, missingFieldName] = formValidation(data, [
+        submitData.participants = splitParticipants(participants);
+        submitData.youtubeURLs = splitYoutubeURLs(youtubeURLs);
+        const [result, missingFieldName] = formValidation(submitData, [
             'participants',
             'kinds',
             'isContestWork',
@@ -40,7 +24,7 @@ const Submit = ({
         ]);
         if (result) {
             setIsLoading(true);
-            uploadArticleAsync(data);
+            fetchArticle(submitData);
         } else {
             Modal.warning({
                 title: '모든 양식을 채워주세요.',
