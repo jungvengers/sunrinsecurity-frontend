@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Form from '../components/Form/Form';
+import UploadForm from '../components/Form/UploadForm';
 import {
     toggleIsContestWork,
     addParticipant,
@@ -11,9 +11,9 @@ import {
     addYoutubeURL,
     changeContent,
     uploadArticleAsync,
-} from '../store/actions/formAction';
+} from '../store/actions/uploadAction';
 
-const FormContainer = ({
+const UploadFormContainer = ({
     isContestWork,
     participants,
     clubs,
@@ -32,7 +32,7 @@ const FormContainer = ({
     uploadArticleAsync,
 }) => {
     return (
-        <Form
+        <UploadForm
             isContestWork={isContestWork}
             participants={participants}
             clubs={clubs}
@@ -48,21 +48,21 @@ const FormContainer = ({
             removeImageFile={removeImageFile}
             addYoutubeURL={addYoutubeURL}
             changeContent={changeContent}
-            uploadArticleAsync={uploadArticleAsync}
+            uploadArticle={uploadArticleAsync}
         />
     );
 };
 
 export default connect(
     // mapStateToProps
-    ({ form }) => ({
-        isContestWork: form.isContestWork,
-        participants: form.participants,
-        clubs: form.clubs,
-        kinds: form.kinds,
-        content: form.content,
-        imageFiles: form.imageFiles,
-        youtubeURLs: form.youtubeURLs,
+    ({ upload }) => ({
+        isContestWork: upload.isContestWork,
+        participants: upload.participants,
+        clubs: upload.clubs,
+        kinds: upload.kinds,
+        content: upload.content,
+        imageFiles: upload.imageFiles,
+        youtubeURLs: upload.youtubeURLs,
     }),
     // mapDispatchToProps
     {
@@ -76,4 +76,4 @@ export default connect(
         changeContent,
         uploadArticleAsync,
     }
-)(FormContainer);
+)(UploadFormContainer);

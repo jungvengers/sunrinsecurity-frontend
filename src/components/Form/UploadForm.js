@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 import Header from '../Main/Header/Header';
 import Input from './Input/Input';
-import Submit from './Submit';
+import Submit from './Submit/Submit';
 
 import history from '../../utils/lib/history';
+import { splitParticipants, splitYoutubeURLs } from '../../utils/lib/splitString';
 
-import './Form.scss';
+import './UploadForm.scss';
 
-const Form = ({
+const UploadForm = ({
     isContestWork,
     participants,
     clubs,
@@ -24,14 +25,26 @@ const Form = ({
     removeImageFile,
     addYoutubeURL,
     changeContent,
-    uploadArticleAsync,
+    uploadArticle,
 }) => {
+    const submitData = {
+        clubs,
+        kinds,
+        isContestWork,
+        files: imageFiles,
+        content,
+    };
     if (!localStorage.getItem('accessToken')) history.push('/');
     return (
-        <div className="Form">
+        <div className="UploadForm">
             <Header />
             <div>
                 <Input
+                    participants={participants}
+                    clubs={clubs}
+                    kinds={kinds}
+                    isContestWork={isContestWork}
+                    content={content}
                     imageFiles={imageFiles}
                     youtubeURLs={youtubeURLs}
                     participants={participants}
@@ -45,18 +58,14 @@ const Form = ({
                     addYoutubeURL={addYoutubeURL}
                 />
                 <Submit
-                    isContestWork={isContestWork}
+                    submitData={submitData}
                     participants={participants}
-                    clubs={clubs}
-                    kinds={kinds}
-                    content={content}
-                    imageFiles={imageFiles}
                     youtubeURLs={youtubeURLs}
-                    uploadArticleAsync={uploadArticleAsync}
+                    fetchArticle={uploadArticle}
                 />
             </div>
         </div>
     );
 };
 
-export default Form;
+export default UploadForm;

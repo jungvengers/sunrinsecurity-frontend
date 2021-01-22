@@ -1,18 +1,18 @@
 import { createAction } from 'redux-actions';
 
-export const UPLOAD_ARTICLE_LOADING = 'article/UPLOAD_ARTICLE_LOADING';
-export const UPLOAD_ARTICLE_SUCCESS = 'article/UPLOAD_ARTICLE_SUCCESS';
-export const UPLOAD_ARTICLE_ERROR = 'article/UPLOAD_ARTICLE_ERROR';
+export const UPLOAD_ARTICLE_LOADING = 'upload/UPLOAD_ARTICLE_LOADING';
+export const UPLOAD_ARTICLE_SUCCESS = 'upload/UPLOAD_ARTICLE_SUCCESS';
+export const UPLOAD_ARTICLE_ERROR = 'upload/UPLOAD_ARTICLE_ERROR';
 
-export const TOGGLE_IS_CONTEST_WORK = 'form/TOGGLE_CATEGORY';
-export const ADD_PARTICIPANT = 'form/ADD_PARTICIPANT';
-export const ADD_CLUB = 'form/ADD_CLUB';
-export const ADD_KIND = 'form/ADD_KIND';
-export const ADD_IMAGE_FILE = 'form/ADD_IMAGE_FILE';
-export const REMOVE_IMAGE_FILE = 'form/REMOVE_IMAGE_FILE';
-export const ADD_IMAGE_NAME = 'form/ADD_IMAGE_NAME';
-export const ADD_YOUTUBE_URLS = 'form/YOUTUBE_URLS';
-export const CHANGE_CONTENT = 'form/CHANGE_CONTENT';
+export const TOGGLE_IS_CONTEST_WORK = 'upload/TOGGLE_CATEGORY';
+export const ADD_PARTICIPANT = 'upload/ADD_PARTICIPANT';
+export const ADD_CLUB = 'upload/ADD_CLUB';
+export const ADD_KIND = 'upload/ADD_KIND';
+export const ADD_IMAGE_FILE = 'upload/ADD_IMAGE_FILE';
+export const REMOVE_IMAGE_FILE = 'upload/REMOVE_IMAGE_FILE';
+export const ADD_IMAGE_NAME = 'upload/ADD_IMAGE_NAME';
+export const ADD_YOUTUBE_URLS = 'upload/YOUTUBE_URLS';
+export const CHANGE_CONTENT = 'upload/CHANGE_CONTENT';
 
 export const uploadArticleAsync = createAction(UPLOAD_ARTICLE_LOADING, (input) => input);
 export const toggleIsContestWork = createAction(TOGGLE_IS_CONTEST_WORK, (input) => input);

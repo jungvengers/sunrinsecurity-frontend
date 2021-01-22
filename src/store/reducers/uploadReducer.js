@@ -1,16 +1,16 @@
 import { handleActions } from 'redux-actions';
 
-import * as actions from '../actions/formAction';
+import * as actions from '../actions/uploadAction';
 import { reducerUtils } from '../../utils/lib/asyncUtils';
 
 const initialState = {
-    isContestWork: null,
     participants: [],
     clubs: [],
     kinds: [],
-    content: '',
+    isContestWork: null,
     imageFiles: [],
     youtubeURLs: [],
+    content: '',
     uploadArticle: reducerUtils.initial(),
 };
 
