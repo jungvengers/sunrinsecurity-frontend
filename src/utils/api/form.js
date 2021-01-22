@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IMAGE_API_URL, ARTICLE_API_URL } from '../../config/config';
+import { MEDIA_API_URL, ARTICLE_API_URL } from '../../config/config';
 
 const headers = {
     headers: {
@@ -7,14 +7,15 @@ const headers = {
     },
 };
 
-export const uploadImages = async (data) =>
-    await Promise.all(
-        Array.from(data.imageFiles).map(async (image) => {
+export const uploadImages = async (data) => {
+    if (data.length < 1) return [];
+    return await Promise.all(
+        Array.from(data).map(async (image) => {
             const formData = new FormData();
             formData.append('attachment', image);
-            const response = await axios.post(IMAGE_API_URL, formData, headers);
+            const response = await axios.post(MEDIA_API_URL, formData, headers);
             return response.data.filename;
         })
     );
-
+};
 export const uploadArticle = async (data) => await axios.post(ARTICLE_API_URL, data, headers);
