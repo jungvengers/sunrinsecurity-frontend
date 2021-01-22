@@ -13,8 +13,12 @@ import './Input.scss';
 import { InfoCircleOutlined } from '@ant-design/icons';
 
 const Input = ({
-    imageFiles,
     participants,
+    clubs,
+    kinds,
+    isContestWork,
+    content,
+    imageFiles,
     youtubeURLs,
     toggleIsContestWork,
     addClub,
@@ -31,13 +35,13 @@ const Input = ({
                 <Participant participants={participants} addParticipant={addParticipant} />
             </Form.Item>
             <Form.Item label="소속">
-                <Club addClub={addClub} />
+                <Club clubs={clubs} addClub={addClub} />
             </Form.Item>
             <Form.Item label="분야">
-                <Kind addKind={addKind} />
+                <Kind kinds={kinds} addKind={addKind} />
             </Form.Item>
             <Form.Item label="카테고리">
-                <Category toggleIsContestWork={toggleIsContestWork} />
+                <Category isContestWork={isContestWork} toggleIsContestWork={toggleIsContestWork} />
             </Form.Item>
             <Form.Item label="파일">
                 <File imageFiles={imageFiles} addImageFile={addImageFile} removeImageFile={removeImageFile} />
@@ -51,7 +55,7 @@ const Input = ({
                 <Video youtubeURLs={youtubeURLs} addYoutubeURL={addYoutubeURL} />
             </Form.Item>
             <Form.Item label="내용">
-                <Content changeContent={changeContent} />
+                <Content content={content} changeContent={changeContent} />
             </Form.Item>
         </Form>
     );
