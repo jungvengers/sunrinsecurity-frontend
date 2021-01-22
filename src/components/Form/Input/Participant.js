@@ -7,6 +7,7 @@ const Participant = ({ participants, addParticipant }) => {
     const handleChange = (e) => addParticipant(e.target.value);
     return (
         <Input
+            value={participants}
             placeholder="김선린 이선린 박선린"
             onChange={handleChange}
             prefix={<UserOutlined className="site-form-item-icon" />}

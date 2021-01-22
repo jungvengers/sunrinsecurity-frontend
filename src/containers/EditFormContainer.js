@@ -1,79 +1,95 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Form from '../components/Form/Form';
+import EditForm from '../components/Form/EditForm';
 import {
+    readAnArticleAsync,
+    updateArticleAsync,
     toggleIsContestWork,
     addParticipant,
     addClub,
     addKind,
     addImageFile,
     removeImageFile,
+    removeUploadedImageFile,
     addYoutubeURL,
     changeContent,
-    uploadArticleAsync,
-} from '../store/actions/formAction';
+} from '../store/actions/manageAction';
 
-const FormContainer = ({
-    isContestWork,
+const EditFormContainer = ({
+    match,
+    id,
     participants,
     clubs,
     kinds,
-    content,
-    imageFiles,
+    isContestWork,
+    uploadedFiles,
+    files,
     youtubeURLs,
+    content,
+    readAnArticleAsync,
+    updateArticleAsync,
     toggleIsContestWork,
     addParticipant,
     addClub,
     addKind,
     addImageFile,
     removeImageFile,
+    removeUploadedImageFile,
     addYoutubeURL,
     changeContent,
-    uploadArticleAsync,
 }) => {
     return (
-        <Form
-            isContestWork={isContestWork}
+        <EditForm
+            match={match}
+            id={id}
             participants={participants}
             clubs={clubs}
             kinds={kinds}
-            content={content}
-            imageFiles={imageFiles}
+            isContestWork={isContestWork}
+            uploadedFiles={uploadedFiles}
+            files={files}
             youtubeURLs={youtubeURLs}
+            content={content}
+            readAnArticle={readAnArticleAsync}
+            updateArticle={updateArticleAsync}
             toggleIsContestWork={toggleIsContestWork}
             addParticipant={addParticipant}
             addClub={addClub}
             addKind={addKind}
             addImageFile={addImageFile}
             removeImageFile={removeImageFile}
+            removeUploadedImageFile={removeUploadedImageFile}
             addYoutubeURL={addYoutubeURL}
             changeContent={changeContent}
-            uploadArticleAsync={uploadArticleAsync}
         />
     );
 };
 
 export default connect(
     // mapStateToProps
-    ({ form }) => ({
-        isContestWork: form.isContestWork,
-        participants: form.participants,
-        clubs: form.clubs,
-        kinds: form.kinds,
-        content: form.content,
-        imageFiles: form.imageFiles,
-        youtubeURLs: form.youtubeURLs,
+    ({ manage }) => ({
+        id: manage.id,
+        participants: manage.participants,
+        clubs: manage.clubs,
+        kinds: manage.kinds,
+        isContestWork: manage.isContestWork,
+        uploadedFiles: manage.uploadedFiles,
+        files: manage.files,
+        youtubeURLs: manage.youtubeURLs,
+        content: manage.content,
     }),
     // mapDispatchToProps
     {
+        readAnArticleAsync,
+        updateArticleAsync,
         toggleIsContestWork,
         addParticipant,
         addClub,
         addKind,
         addImageFile,
         removeImageFile,
+        removeUploadedImageFile,
         addYoutubeURL,
         changeContent,
-        uploadArticleAsync,
     }
-)(FormContainer);
+)(EditFormContainer);
