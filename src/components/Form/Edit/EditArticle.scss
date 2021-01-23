@@ -1,4 +1,4 @@
-.EditForm {
+.EditArticle {
     background: #f0f2f5;
     width: 100%;
     display: flex;
@@ -13,20 +13,20 @@
         min-width: 930px;
         display: flex;
         flex-direction: column;
-        .EditForm-uploaded-file,
-        .EditForm-uploaded-youtube {
+        .EditArticle-uploaded-file,
+        .EditArticle-uploaded-youtube {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s;
             &:hover {
-                & .EditForm-del-icon {
+                & .EditArticle-del-icon {
                     display: inline;
                 }
                 background: #f5f5f5;
             }
-            & .EditForm-del-icon {
+            & .EditArticle-del-icon {
                 display: none;
                 transition: all 0.3s;
             }
