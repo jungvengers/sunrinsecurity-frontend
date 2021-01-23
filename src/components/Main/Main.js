@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
 
-import Sider from './Side/Sider';
+import Side from './Side/Side';
 import Header from './Header/Header';
 import Content from './Content/Content';
 
@@ -20,7 +20,7 @@ const Main = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
         <Layout className="Main" style={{ height: '100vh' }}>
             <Header />
             <Layout style={{ height: '90%', overflow: 'hidden' }}>
-                <Sider
+                <Side
                     handleToggleCategory={handleToggleCategory}
                     handleAddClub={handleAddClub}
                     handleDeleteClub={handleDeleteClub}
