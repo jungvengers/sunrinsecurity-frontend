@@ -2,6 +2,8 @@ import React from 'react';
 import { Image } from 'antd';
 import YouTube from 'react-youtube';
 
+import { MEDIA_API_URL } from '../../../config/config';
+
 import './ArticleItem.scss';
 
 import notFoundImage from '../../../assets/not-found-image.jpg';
@@ -23,19 +25,18 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
 
     return (
         <div className="ArticleItem">
-            <div className={files.images.length < 4 ? 'ArticleItem-images-few' : 'ArticleItem-images-lot'}>
-                {/* TODO 링크가 잘못된 경우가 아닌 이미지 가 없을때 예외처리 */}
-                <Image.PreviewGroup>
-                    {files.images.map((image, idx) => (
-                        <div key={idx} className="ArticleItem-image-wrapper">
-                            <Image
-                                src={`https://api.jungvengers.com/media/${image}`}
-                                fallback={notFoundImage}
-                            />
-                        </div>
-                    ))}
-                </Image.PreviewGroup>
-            </div>
+            {files.images.length > 0 ? (
+                <div
+                    className={files.images.length < 4 ? 'ArticleItem-images-few' : 'ArticleItem-images-lot'}>
+                    <Image.PreviewGroup>
+                        {files.images.map((image, idx) => (
+                            <div key={idx} className="ArticleItem-image-wrapper">
+                                <Image src={`${MEDIA_API_URL}/${image}`} fallback={notFoundImage} />
+                            </div>
+                        ))}
+                    </Image.PreviewGroup>
+                </div>
+            ) : null}
             <div className="ArticleItem-content">
                 <p>{content}</p>
             </div>
@@ -70,8 +71,8 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                 {files.pdfs.length > 0 && (
                     <div className="ArticleItem-file-pdf">
                         pdf 파일:{' '}
-                        {files.pdfs.map((pdf) => (
-                            <a href={`https://api.jungvengers.com/media/${pdf}`} target="_blank">
+                        {files.pdfs.map((pdf, idx) => (
+                            <a href={`https://api.jungvengers.com/media/${pdf}`} target="_blank" key={idx}>
                                 {pdf + ' '}
                             </a>
                         ))}
@@ -80,8 +81,8 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                 {files.zips.length > 0 && (
                     <div className="ArticleItem-file-zip">
                         zip 파일:{' '}
-                        {files.zips.map((file) => (
-                            <a href={`https://api.jungvengers.com/media/${file}`} target="_blank">
+                        {files.zips.map((file, idx) => (
+                            <a href={`https://api.jungvengers.com/media/${file}`} target="_blank" key={idx}>
                                 {file + ' '}
                             </a>
                         ))}

@@ -6,7 +6,6 @@ import { reducerUtils } from '../../utils/lib/asyncUtils';
 const initialState = {
     articles: [],
     readArticle: reducerUtils.initial(),
-    deleteArticle: reducerUtils.initial(),
 };
 
 const article = handleActions(
@@ -35,32 +34,6 @@ const article = handleActions(
         [actions.READ_ARTICLE_ERROR]: (state, action) => ({
             ...state,
             readArticle: reducerUtils.error(action.payload),
-        }),
-        // 글 수정
-        [actions.UPDATE_ARTICLE_LOADING]: (state, action) => ({
-            ...state,
-            updateArticle: reducerUtils.loading(),
-        }),
-        [actions.UPDATE_ARTICLE_SUCCESS]: (state, action) => ({
-            ...state,
-            updateArticle: reducerUtils.success(action.payload),
-        }),
-        [actions.UPDATE_ARTICLE_ERROR]: (state, action) => ({
-            ...state,
-            updateArticle: reducerUtils.error(action.payload),
-        }),
-        // 글 삭제
-        [actions.DELETE_ARTICLE_LOADING]: (state, action) => ({
-            ...state,
-            deleteArticle: reducerUtils.loading(),
-        }),
-        [actions.DELETE_ARTICLE_SUCCESS]: (state, action) => ({
-            ...state,
-            deleteArticle: reducerUtils.success(action.payload),
-        }),
-        [actions.DELETE_ARTICLE_ERROR]: (state, action) => ({
-            ...state,
-            deleteArticle: reducerUtils.error(action.payload),
         }),
     },
     initialState
