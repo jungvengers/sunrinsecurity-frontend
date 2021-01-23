@@ -3,8 +3,8 @@ import { Router } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
 
 import ManageContainer from './containers/ManageContainer';
-import EditFormContainer from './containers/EditFormContainer';
-import UploadFormContainer from './containers/UploadFormContainer';
+import EditArticleContainer from './containers/EditArticleContainer';
+import UploadArticleContainer from './containers/UploadArticleContainer';
 import MainContainer from './containers/MainContainer';
 import LoginContainer from './containers/LoginContainer';
 import RegisterContainer from './containers/RegisterContainer';
@@ -21,9 +21,9 @@ const App = () => {
                 <Route exact path="/" component={MainContainer} />
                 <Route path="/login" component={LoginContainer} />
                 <Route path="/register" component={RegisterContainer} />
-                <Route path="/admin/form" component={UploadFormContainer} />
+                <Route path="/admin/form" component={UploadArticleContainer} />
                 <Route exact path="/admin/edit" component={ManageContainer} />
-                <Route path="/admin/edit/:id" component={EditFormContainer} />
+                <Route path="/admin/edit/:id" component={EditArticleContainer} />
             </Switch>
         </Router>
     );
