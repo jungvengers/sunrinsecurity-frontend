@@ -11,7 +11,9 @@
         width: 70%;
         margin: 0 auto;
         .infiniteScrollWrapper {
+            margin-top: 40px;
             width: 100%;
+            text-align: center;
             &::-webkit-scrollbar {
                 display: none;
             }
