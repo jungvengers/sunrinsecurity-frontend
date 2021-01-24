@@ -5,7 +5,6 @@
         color: white;
     }
     @include desktop {
-        height: 10%;
         & > h2 {
             font-size: 1.2rem;
         }
@@ -20,11 +19,11 @@
         & > h2 {
             font-size: 1.7rem;
         }
-        & > ul {
+        .ant-menu-submenu-title {
             font-size: 1.3rem;
-            & li {
-                padding: 0 7px !important;
-            }
+        }
+        & li {
+            padding: 0 7px !important;
         }
     }
 }
