@@ -17,7 +17,7 @@ const NoticeList = ({ notices, readingStatus, readNotice, readMoreNotice }) => {
         };
         readNotice(queryStringData);
         setCurrentPage(2);
-    }, [perPage, currentPage, readNotice]);
+    }, [perPage, readNotice]);
 
     const getNotice = () => {
         const queryStringData = {
