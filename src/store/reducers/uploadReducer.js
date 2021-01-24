@@ -4,6 +4,7 @@ import * as actions from '../actions/uploadAction';
 import { reducerUtils } from '../../utils/lib/asyncUtils';
 
 const initialState = {
+    title: '',
     participants: [],
     clubs: [],
     kinds: [],
@@ -16,9 +17,9 @@ const initialState = {
 
 const form = handleActions(
     {
-        [actions.TOGGLE_IS_CONTEST_WORK]: (state, action) => ({
+        [actions.CHANGE_TITLE]: (state, action) => ({
             ...state,
-            isContestWork: action.payload,
+            title: action.payload,
         }),
         [actions.ADD_PARTICIPANT]: (state, action) => ({
             ...state,
@@ -32,13 +33,17 @@ const form = handleActions(
             ...state,
             kinds: action.payload,
         }),
+        [actions.TOGGLE_IS_CONTEST_WORK]: (state, action) => ({
+            ...state,
+            isContestWork: action.payload,
+        }),
         [actions.ADD_IMAGE_FILE]: (state, action) => ({
             ...state,
             imageFiles: state.imageFiles.concat(action.payload),
         }),
         [actions.REMOVE_IMAGE_FILE]: (state, action) => ({
             ...state,
-            imageFiles: state.imageFiles.filter((imageFile) => imageFile.name != action.payload.name),
+            imageFiles: state.imageFiles.filter((imageFile) => imageFile.name !== action.payload.name),
         }),
         [actions.ADD_YOUTUBE_URLS]: (state, action) => ({
             ...state,
