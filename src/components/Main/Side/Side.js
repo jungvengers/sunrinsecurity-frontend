@@ -43,7 +43,12 @@ const Side = ({ handleToggleCategory, handleAddClub, handleDeleteClub, handleAdd
                     </SubMenu>
                 </Menu>
             </Sider>
-            <div className="footer">Ant Design ©2018 Created by Ant UED</div>
+            <div className="footer">
+                정보보호과 @ 2021 Created by <br />
+                19학번 김연규
+                <br /> 19학번 조강연
+                <br /> 19학번 양원준
+            </div>
         </div>
     );
 };
