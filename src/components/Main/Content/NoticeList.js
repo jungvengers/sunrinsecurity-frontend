@@ -44,7 +44,7 @@ const NoticeList = ({ notices, readingStatus, readNotice, readMoreNotice }) => {
                         return (
                             <Card
                                 title={notice.title}
-                                style={{ width: '100%', marginTop: '15px' }}
+                                style={{ width: '100%', textAlign: 'left', marginTop: '15px' }}
                                 key={notice._id}>
                                 <NoticeItem
                                     content={notice.content}
