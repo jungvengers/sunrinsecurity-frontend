@@ -1,0 +1,27 @@
+@import './styles/mixin.scss';
+
+html,
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background: #f7f7f7;
+}
+
+@include desktop {
+    html {
+        font-size: 16px;
+    }
+}
+@include tablet {
+    html {
+        font-size: 10px;
+    }
+}
+@include mobile {
+    html {
+        font-size: 7px;
+    }
+}
