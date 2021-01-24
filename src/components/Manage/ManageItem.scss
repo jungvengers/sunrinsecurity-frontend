@@ -1,0 +1,10 @@
+.ManageItem {
+    width: 100%;
+    .ManageItem-date {
+        margin-bottom: 15px;
+    }
+    .ManageItem-buttons {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

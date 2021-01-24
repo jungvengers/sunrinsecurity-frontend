@@ -1,0 +1,23 @@
+.NoticeList {
+    width: 100%;
+    min-width: 800px;
+    height: 100%;
+    overflow-y: scroll;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .infinite-scroll-component__outerdiv {
+        width: 70%;
+        margin: 0 auto;
+        .infiniteScrollWrapper {
+            width: 100%;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .NoticeItem {
+                width: 100%;
+            }
+        }
+    }
+}

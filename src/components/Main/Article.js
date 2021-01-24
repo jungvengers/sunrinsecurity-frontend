@@ -1,45 +1,52 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { Layout } from 'antd';
 
-import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
-import { ARTICLE_API_URL } from '../../config/config';
+import Side from './Side/Side';
+import Header from './Header/Header';
+import ArticleList from './Content/ArticleList';
 
-import './Article.scss';
+const Article = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
+    const [category, setCategory] = useState(null);
+    const [clubs, setClubs] = useState([]);
+    const [kinds, setKinds] = useState([]);
 
-const Article = ({ clubs, content, category, kinds, participants, id, removeArticle }) => {
-    const deletePost = async () => {
-        const headers = {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-            },
-        };
-        await axios.delete(`${ARTICLE_API_URL}/${id}`, headers);
-        removeArticle(id);
-    };
+    const handleToggleCategory = (e) => setCategory(e.key);
+    const handleAddClub = (e) => setClubs(clubs.concat(e.key));
+    const handleDeleteClub = (e) => setClubs(clubs.filter((club) => club !== e.key));
+    const handleAddkind = (e) => setKinds(kinds.concat(e.key));
+    const handleDeleteKind = (e) => setKinds(kinds.filter((kind) => kind !== e.key));
 
     return (
-        <div className="Article">
-            <h2>{category ? '대회실적' : '개인 프로젝트'}</h2>
-            <div className="participants">
-                {kinds.map((kind, idx) => (
-                    <li key={idx}>{kind}</li>
-                ))}
-            </div>
-            <div className="participants">
-                {participants.map((name, idx) => (
-                    <li key={idx}>
-                        {clubs[idx]} 소속 {name}
-                    </li>
-                ))}
-            </div>
-            <p dangerouslySetInnerHTML={{ __html: content }}></p>
-            {localStorage.getItem('accessToken') && (
-                <div className="ArticleButton">
-                    <AiOutlineDelete className="img" onClick={deletePost} />
-                    <AiOutlineEdit className="img" />
-                </div>
-            )}
-        </div>
+        <Layout className="Article" style={{ height: '100vh' }}>
+            <Header />
+            <Layout style={{ height: '90%', overflow: 'hidden' }}>
+                <Side
+                    handleToggleCategory={handleToggleCategory}
+                    handleAddClub={handleAddClub}
+                    handleDeleteClub={handleDeleteClub}
+                    handleAddkind={handleAddkind}
+                    handleDeleteKind={handleDeleteKind}
+                />
+                <Layout.Content
+                    className="site-layout-background"
+                    style={{
+                        height: '100%',
+                        padding: '24, 24, 0, 24',
+                        margin: 0,
+                        minHeight: 280,
+                    }}>
+                    <ArticleList
+                        articles={articles}
+                        category={category}
+                        clubs={clubs}
+                        kinds={kinds}
+                        readingStatus={readingStatus}
+                        readArticle={readArticle}
+                        readMoreArticle={readMoreArticle}
+                    />
+                </Layout.Content>
+            </Layout>
+        </Layout>
     );
 };
 
