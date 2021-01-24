@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
@@ -18,7 +18,12 @@ const sagaMiddleware = createSagaMiddleware({
     },
 });
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger, sagaMiddleware)));
+const enhancer =
+    process.env.NODE_ENV === 'production'
+        ? compose(applyMiddleware(sagaMiddleware))
+        : composeWithDevTools(applyMiddleware(logger, sagaMiddleware));
+
+const store = createStore(rootReducer, enhancer);
 
 sagaMiddleware.run(rootSaga);
 
