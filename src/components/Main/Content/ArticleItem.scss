@@ -1,7 +1,7 @@
+@import '../../../styles/mixin.scss';
+
 .ArticleItem {
-    width: 100%;
     .ArticleItem-images-few {
-        width: 100%;
         margin: 0 auto;
         .ArticleItem-image-wrapper {
             display: none;
@@ -9,13 +9,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 100%;
-                height: 60vh;
-                min-height: 400px;
                 overflow: hidden;
             }
             img {
-                width: 100%;
                 transition: transform 0.2s;
                 &:hover {
                     transform: scale(1.02);
@@ -27,7 +23,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        width: 100%;
         margin: 0 auto;
         .ArticleItem-image-wrapper {
             display: none;
@@ -38,15 +33,11 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 49%;
-                height: 35vh;
                 overflow: hidden;
                 background: #000;
-                margin: 1px;
+                margin: 2px;
             }
             img {
-                width: 100%;
-                height: auto;
                 transition: transform 0.2s;
                 &:hover {
                     transform: scale(1.05);
@@ -63,10 +54,7 @@
 
     .ArticleItem-content {
         p {
-            padding: 10px;
-            margin: 5px 2px;
             text-align: justify;
-            font-size: 1.1rem;
         }
     }
     .ArticleItem-detail-info {
@@ -85,6 +73,146 @@
         }
         & a:hover {
             text-decoration: underline;
+        }
+    }
+    @include desktop {
+        width: 100%;
+        .ArticleItem-images-few {
+            width: 100%;
+            margin: 0 auto;
+            .ArticleItem-image-wrapper {
+                &:nth-child(1) {
+                    width: 70%;
+                    height: 50vh;
+                    min-height: 400px;
+                    margin: 0 auto;
+                }
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        .ArticleItem-images-lot {
+            width: 100%;
+            .ArticleItem-image-wrapper {
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4) {
+                    width: 49%;
+                    height: 35vh;
+                    margin: 1px;
+                }
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        .ArticleItem-content {
+            p {
+                padding: 10px;
+                margin: 5px 2px;
+                font-size: 1.1rem;
+            }
+        }
+        .ArticleItem-detail-info {
+            margin: 40px 0 50px 0;
+        }
+        .ArticleItem-file {
+            margin-top: 20px;
+        }
+    }
+    @include tablet {
+        .ArticleItem-images-few {
+            .ArticleItem-image-wrapper {
+                &:nth-child(1) {
+                    width: 100%;
+                    height: 30vh;
+                    min-height: 200px;
+                }
+            }
+        }
+        .ArticleItem-images-lot {
+            .ArticleItem-image-wrapper {
+                display: none;
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4) {
+                    width: 49%;
+                    height: 20vh;
+                }
+            }
+        }
+        .ArticleItem-content {
+            p {
+                margin: 7px 0 20px 0;
+                text-align: justify;
+                font-size: 1.2rem;
+            }
+        }
+        .ArticleItem-detail-info {
+            margin: 10px 0 15px 0;
+            & > div {
+                text-align: center;
+                h2 {
+                    font-size: 1.5rem;
+                }
+                li {
+                    font-size: 1rem;
+                }
+            }
+        }
+        .ArticleItem-file {
+            margin-top: 10px;
+        }
+    }
+    @include mobile {
+        .ArticleItem-images-few {
+            .ArticleItem-image-wrapper {
+                &:nth-child(1) {
+                    width: 100%;
+                    height: 25vh;
+                    min-height: 50px;
+                }
+            }
+        }
+        .ArticleItem-images-lot {
+            .ArticleItem-image-wrapper {
+                display: none;
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4) {
+                    width: 48%;
+                    height: 13vh;
+                }
+            }
+        }
+        .ArticleItem-content {
+            p {
+                margin: 7px 0;
+                font-size: 0.5rem;
+            }
+        }
+        .ArticleItem-detail-info {
+            margin: 10px 0 15px 0;
+            & > div {
+                text-align: center;
+                h2 {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                }
+                li {
+                    font-size: 1rem;
+                }
+            }
+        }
+        .ArticleItem-file {
+            margin-top: 10px;
+            font-size: 0.9rem;
         }
     }
 }
