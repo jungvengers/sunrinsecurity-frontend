@@ -22,6 +22,7 @@ const App = () => {
     return (
         <Router history={history}>
             <Switch>
+                <Route exact path="/" component={ArticleContainer} />
                 <Route exact path="/article" component={ArticleContainer} />
                 <Route exact path="/notice" component={NoticeContainer} />
                 <Route exact path="/login" component={LoginContainer} />

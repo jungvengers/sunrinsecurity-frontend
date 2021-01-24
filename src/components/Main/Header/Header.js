@@ -21,11 +21,11 @@ const Header = () => {
                             {/* <Menu.Item key="about:1" icon={<SearchOutlined />}>
                                 <Link to="/">학과 소개</Link>
                             </Menu.Item> */}
-                            <Menu.Item key="about:2" icon={<CommentOutlined />}>
-                                <Link to="/notice">학과 소식</Link>
-                            </Menu.Item>
-                            <Menu.Item key="about:3" icon={<ProjectOutlined />}>
+                            <Menu.Item key="about:2" icon={<ProjectOutlined />}>
                                 <Link to="/article">프로젝트 전시장</Link>
+                            </Menu.Item>
+                            <Menu.Item key="about:3" icon={<CommentOutlined />}>
+                                <Link to="/notice">학과 소식</Link>
                             </Menu.Item>
                         </Menu.SubMenu>
                         <Menu.SubMenu key="2" title="글 작성">
