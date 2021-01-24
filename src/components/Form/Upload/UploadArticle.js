@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Header from '../../Main/Header/Header';
 import Input from '../Input/Input';
-import Submit from '../Submit/Submit';
+import ArticleSubmit from '../Submit/ArticleSubmit';
 
 import history from '../../../utils/lib/history';
 
@@ -46,7 +46,6 @@ const UploadArticle = ({
                     content={content}
                     imageFiles={imageFiles}
                     youtubeURLs={youtubeURLs}
-                    participants={participants}
                     toggleIsContestWork={toggleIsContestWork}
                     addClub={addClub}
                     addKind={addKind}
@@ -56,7 +55,7 @@ const UploadArticle = ({
                     addParticipant={addParticipant}
                     addYoutubeURL={addYoutubeURL}
                 />
-                <Submit
+                <ArticleSubmit
                     submitData={submitData}
                     participants={participants}
                     youtubeURLs={youtubeURLs}
