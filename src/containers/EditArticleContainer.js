@@ -13,7 +13,7 @@ import {
     removeUploadedImageFile,
     addYoutubeURL,
     changeContent,
-} from '../store/actions/manageAction';
+} from '../store/actions/manageArticleAction';
 
 const EditArticleContainer = ({
     match,
@@ -67,16 +67,16 @@ const EditArticleContainer = ({
 
 export default connect(
     // mapStateToProps
-    ({ manage }) => ({
-        id: manage.id,
-        participants: manage.participants,
-        clubs: manage.clubs,
-        kinds: manage.kinds,
-        isContestWork: manage.isContestWork,
-        uploadedFiles: manage.uploadedFiles,
-        files: manage.files,
-        youtubeURLs: manage.youtubeURLs,
-        content: manage.content,
+    ({ manageArticle }) => ({
+        id: manageArticle.id,
+        participants: manageArticle.participants,
+        clubs: manageArticle.clubs,
+        kinds: manageArticle.kinds,
+        isContestWork: manageArticle.isContestWork,
+        uploadedFiles: manageArticle.uploadedFiles,
+        files: manageArticle.files,
+        youtubeURLs: manageArticle.youtubeURLs,
+        content: manageArticle.content,
     }),
     // mapDispatchToProps
     {
