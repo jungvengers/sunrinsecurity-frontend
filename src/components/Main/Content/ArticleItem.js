@@ -3,12 +3,13 @@ import { Image } from 'antd';
 import YouTube from 'react-youtube';
 
 import { MEDIA_API_URL } from '../../../config/config';
+import { getYtpSize } from '../../../utils/lib/getYtpSize';
 
 import './ArticleItem.scss';
-
 import notFoundImage from '../../../assets/not-found-image.jpg';
 
 const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }) => {
+    let ytpSize = getYtpSize();
     let splittedFiles = { images: [], pdfs: [], zips: [] };
     files.map((file) => {
         if (file.indexOf('.jpg') !== -1 || file.indexOf('.jpeg') !== -1 || file.indexOf('.png') !== -1)
@@ -17,11 +18,6 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
         else if (file.indexOf('.zip') !== -1) splittedFiles.zips.push(file);
     });
     files = splittedFiles;
-
-    const opts = {
-        height: '390',
-        width: '640',
-    };
 
     return (
         <div className="ArticleItem">
@@ -63,7 +59,7 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
             {youtubeURLs.length > 0 && (
                 <div className="ArticleItem-youtube">
                     {youtubeURLs.map((url, idx) => (
-                        <YouTube videoId={url} opts={opts} key={idx} />
+                        <YouTube videoId={url} opts={ytpSize} key={idx} />
                     ))}
                 </div>
             )}
