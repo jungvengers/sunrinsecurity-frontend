@@ -16,7 +16,6 @@ export function* readNoticeSaga(action) {
 export function* readMoreNoticeSaga(action) {
     try {
         const result = yield call(noticeAPI.readListNotice, action.payload);
-        console.log(result);
         yield put({ type: actions.ADD_NOTICE, payload: result });
         yield put({ type: actions.READ_MORE_NOTICE_SUCCESS, error: false, payload: result });
     } catch (error) {
