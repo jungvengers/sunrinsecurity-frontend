@@ -4,7 +4,7 @@ import { Form, Upload, message } from 'antd';
 import { InboxOutlined, CloudServerOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import Header from '../../Main/Header/Header';
-import Submit from '../Submit/Submit';
+import ArticleSubmit from '../Submit/ArticleSubmit';
 import Participant from '../Input/Participant';
 import Club from '../Input/Club';
 import Kind from '../Input/Kind';
@@ -40,7 +40,7 @@ const EditArticle = ({
 }) => {
     useEffect(() => {
         readAnArticle(match.params.id);
-    }, []);
+    }, [readAnArticle, match.params.id]);
     const props = {
         fileList: files,
         beforeUpload: (file) => {
@@ -123,7 +123,7 @@ const EditArticle = ({
                         <Video youtubeURLs={youtubeURLs} addYoutubeURL={addYoutubeURL} />
                     </Form.Item>
                 </Form>
-                <Submit
+                <ArticleSubmit
                     submitData={submitData}
                     participants={participants}
                     youtubeURLs={youtubeURLs}
