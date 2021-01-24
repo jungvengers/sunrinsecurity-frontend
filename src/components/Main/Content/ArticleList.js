@@ -49,7 +49,7 @@ const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArti
                     articles.map((article) => {
                         return (
                             <Card
-                                title={article.isContestWork ? '대회실적' : '개인 프로젝트'}
+                                title={article.isContestWork ? '외부실적' : '교내실적'}
                                 style={{ width: '100%', textAlign: 'left', marginTop: '15px' }}
                                 key={article._id}>
                                 <ArticleItem
