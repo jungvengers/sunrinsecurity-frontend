@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import Header from '../Main/Header/Header';
-import Input from './Input/Input';
-import Submit from './Submit/Submit';
+import Header from '../../Main/Header/Header';
+import Input from '../Input/Input';
+import ArticleSubmit from '../Submit/ArticleSubmit';
 
-import history from '../../utils/lib/history';
-import { splitParticipants, splitYoutubeURLs } from '../../utils/lib/splitString';
+import history from '../../../utils/lib/history';
 
-import './UploadForm.scss';
+import './UploadArticle.scss';
 
-const UploadForm = ({
+const UploadArticle = ({
     isContestWork,
     participants,
     clubs,
@@ -36,7 +35,7 @@ const UploadForm = ({
     };
     if (!localStorage.getItem('accessToken')) history.push('/');
     return (
-        <div className="UploadForm">
+        <div className="UploadArticle">
             <Header />
             <div>
                 <Input
@@ -47,7 +46,6 @@ const UploadForm = ({
                     content={content}
                     imageFiles={imageFiles}
                     youtubeURLs={youtubeURLs}
-                    participants={participants}
                     toggleIsContestWork={toggleIsContestWork}
                     addClub={addClub}
                     addKind={addKind}
@@ -57,7 +55,7 @@ const UploadForm = ({
                     addParticipant={addParticipant}
                     addYoutubeURL={addYoutubeURL}
                 />
-                <Submit
+                <ArticleSubmit
                     submitData={submitData}
                     participants={participants}
                     youtubeURLs={youtubeURLs}
@@ -68,4 +66,4 @@ const UploadForm = ({
     );
 };
 
-export default UploadForm;
+export default UploadArticle;

@@ -3,44 +3,35 @@ import { Form, Upload, message } from 'antd';
 
 import { InboxOutlined, CloudServerOutlined, DeleteOutlined } from '@ant-design/icons';
 
-import Header from '../Main/Header/Header';
-import Submit from './Submit/Submit';
-import Participant from '../Form/Input/Participant';
-import Club from '../Form/Input/Club';
-import Kind from '../Form/Input/Kind';
-import Category from '../Form/Input/Category';
-import Video from '../Form/Input/Video';
-import Content from '../Form/Input/Content';
+import Header from '../../Main/Header/Header';
+import NoticeSubmit from '../Submit/NoticeSubmit';
+import Title from '../Input/Title';
+import Video from '../Input/Video';
+import Content from '../Input/Content';
 
-import './EditForm.scss';
+import './EditArticle.scss';
 import { InfoCircleOutlined } from '@ant-design/icons';
 
-const EditForm = ({
+const EditArticle = ({
     match,
     id,
-    participants,
-    clubs,
-    kinds,
-    isContestWork,
     uploadedFiles,
     files,
     youtubeURLs,
+    title,
     content,
-    readAnArticle,
-    updateArticle,
-    toggleIsContestWork,
-    addParticipant,
-    addClub,
-    addKind,
+    readAnNotice,
+    updateNotice,
     addImageFile,
     removeImageFile,
     removeUploadedImageFile,
     addYoutubeURL,
+    changeTitle,
     changeContent,
 }) => {
     useEffect(() => {
-        readAnArticle(match.params.id);
-    }, []);
+        readAnNotice(match.params.id);
+    }, [readAnNotice, match.params.id]);
     const props = {
         fileList: files,
         beforeUpload: (file) => {
@@ -58,42 +49,31 @@ const EditForm = ({
     };
     const submitData = {
         id,
-        clubs,
-        kinds,
-        isContestWork,
         files,
         fileNames: uploadedFiles,
+        title,
         content,
     };
     return (
-        <div className="EditForm">
+        <div className="EditArticle">
             <Header />
             <div>
                 <Form layout="vertical" className="Input">
-                    <Form.Item label="참여자">
-                        <Participant participants={participants} addParticipant={addParticipant} />
-                    </Form.Item>
-                    <Form.Item label="소속">
-                        <Club clubs={clubs} addClub={addClub} />
-                    </Form.Item>
-                    <Form.Item label="분야">
-                        <Kind kinds={kinds} addKind={addKind} />
-                    </Form.Item>
-                    <Form.Item label="카테고리">
-                        <Category isContestWork={isContestWork} toggleIsContestWork={toggleIsContestWork} />
+                    <Form.Item label="제목">
+                        <Title title={title} changeTitle={changeTitle} />
                     </Form.Item>
                     <Form.Item label="내용">
                         <Content content={content} changeContent={changeContent} />
                     </Form.Item>
                     <Form.Item label="업로드된 영상 링크 및 파일">
                         {uploadedFiles.map((filename) => (
-                            <div className="EditForm-uploaded-file">
+                            <div className="EditArticle-uploaded-file">
                                 <div>
                                     <CloudServerOutlined style={{ marginRight: '8px' }} />
                                     <span>{filename}</span>
                                 </div>
                                 <DeleteOutlined
-                                    className="EditForm-del-icon"
+                                    className="EditArticle-del-icon"
                                     onClick={() => removeUploadedImageFile(filename)}
                                 />
                             </div>
@@ -123,15 +103,10 @@ const EditForm = ({
                         <Video youtubeURLs={youtubeURLs} addYoutubeURL={addYoutubeURL} />
                     </Form.Item>
                 </Form>
-                <Submit
-                    submitData={submitData}
-                    participants={participants}
-                    youtubeURLs={youtubeURLs}
-                    fetchArticle={updateArticle}
-                />
+                <NoticeSubmit submitData={submitData} youtubeURLs={youtubeURLs} fetchArticle={updateNotice} />
             </div>
         </div>
     );
 };
 
-export default EditForm;
+export default EditArticle;

@@ -1,5 +1,7 @@
 const convertToFieldName = (key) => {
     switch (key) {
+        case 'title':
+            return '제목';
         case 'participants':
             return '참여자';
         case 'clubs':
@@ -18,16 +20,20 @@ const convertToFieldName = (key) => {
 };
 
 export const formValidation = (data, valKeys) => {
-    for (const [key, value] of Object.entries(data)) {
-        if (valKeys.indexOf(key) != -1) {
-            if (value === null) {
-                return [false, convertToFieldName(key)];
-            } else if (typeof value === 'object') {
-                if (value.length < 1) return [false, convertToFieldName(key)];
-            } else if (typeof value === 'string') {
-                if (value === '') return [false, convertToFieldName(key)];
+    try {
+        for (const [key, value] of Object.entries(data)) {
+            if (valKeys.indexOf(key) !== -1) {
+                if (value === null) {
+                    return [false, convertToFieldName(key)];
+                } else if (typeof value === 'object') {
+                    if (value.length < 1) return [false, convertToFieldName(key)];
+                } else if (typeof value === 'string') {
+                    if (value === '') return [false, convertToFieldName(key)];
+                }
             }
         }
+        return [true, null];
+    } catch (err) {
+        console.log(err);
     }
-    return [true, null];
 };

@@ -2,10 +2,14 @@ import React from 'react';
 import { Router } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
 
-import ManageContainer from './containers/ManageContainer';
-import EditFormContainer from './containers/EditFormContainer';
-import UploadFormContainer from './containers/UploadFormContainer';
-import MainContainer from './containers/MainContainer';
+import ManageArticleContainer from './containers/ManageArticleContainer';
+import ManageNoticeContainer from './containers/ManageNoticeContainer';
+import EditArticleContainer from './containers/EditArticleContainer';
+import EditNoticeContainer from './containers/EditNoticeContainer';
+import UploadNoticeContainer from './containers/UploadNoticeContainer';
+import UploadArticleContainer from './containers/UploadArticleContainer';
+import ArticleContainer from './containers/ArticleContainer';
+import NoticeContainer from './containers/NoticeContainer';
 import LoginContainer from './containers/LoginContainer';
 import RegisterContainer from './containers/RegisterContainer';
 
@@ -18,12 +22,16 @@ const App = () => {
     return (
         <Router history={history}>
             <Switch>
-                <Route exact path="/" component={MainContainer} />
-                <Route path="/login" component={LoginContainer} />
-                <Route path="/register" component={RegisterContainer} />
-                <Route path="/admin/form" component={UploadFormContainer} />
-                <Route exact path="/admin/edit" component={ManageContainer} />
-                <Route path="/admin/edit/:id" component={EditFormContainer} />
+                <Route exact path="/article" component={ArticleContainer} />
+                <Route exact path="/notice" component={NoticeContainer} />
+                <Route exact path="/login" component={LoginContainer} />
+                <Route exact path="/register" component={RegisterContainer} />
+                <Route exact path="/admin/article" component={ManageArticleContainer} />
+                <Route exact path="/admin/notice" component={ManageNoticeContainer} />
+                <Route exact path="/admin/form/article" component={UploadArticleContainer} />
+                <Route exact path="/admin/form/notice" component={UploadNoticeContainer} />
+                <Route exact path="/admin/edit/article/:id" component={EditArticleContainer} />
+                <Route exact path="/admin/edit/notice/:id" component={EditNoticeContainer} />
             </Switch>
         </Router>
     );
