@@ -20,7 +20,7 @@ const article = handleActions(
         }),
         [actions.REMOVE_ARTICLE]: (state, action) => ({
             ...state,
-            articles: state.articles.filter((article) => article._id != action.payload),
+            articles: state.articles.filter((article) => article._id !== action.payload),
         }),
         // 글 조회
         [actions.READ_ARTICLE_LOADING]: (state, action) => ({

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Main from '../components/Main/Main';
+import Article from '../components/Main/Article';
 import { readArticleAsync, readMoreArticleAsync } from '../store/actions/articleAction';
 
-const MainContainer = ({ articles, readArticle, readArticleAsync, readMoreArticleAsync }) => {
+const ArticleContainer = ({ articles, readArticle, readArticleAsync, readMoreArticleAsync }) => {
     return (
-        <Main
+        <Article
             articles={articles}
             readingStatus={readArticle}
             readArticle={readArticleAsync}
@@ -22,4 +22,4 @@ export default connect(
     }),
     // mapDispatchToProps
     { readArticleAsync, readMoreArticleAsync }
-)(MainContainer);
+)(ArticleContainer);

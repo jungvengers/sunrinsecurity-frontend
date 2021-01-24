@@ -4,11 +4,11 @@ import YouTube from 'react-youtube';
 
 import { MEDIA_API_URL } from '../../../config/config';
 
-import './ArticleItem.scss';
+import './NoticeItem.scss';
 
 import notFoundImage from '../../../assets/not-found-image.jpg';
 
-const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }) => {
+const NoticeItem = ({ content, files, youtubeURLs, id }) => {
     let splittedFiles = { images: [], pdfs: [], zips: [] };
     files.map((file) => {
         if (file.indexOf('.jpg') !== -1 || file.indexOf('.jpeg') !== -1 || file.indexOf('.png') !== -1)
@@ -24,52 +24,31 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
     };
 
     return (
-        <div className="ArticleItem">
+        <div className="NoticeItem">
             {files.images.length > 0 ? (
-                <div
-                    className={files.images.length < 4 ? 'ArticleItem-images-few' : 'ArticleItem-images-lot'}>
+                <div className={files.images.length < 4 ? 'NoticeItem-images-few' : 'NoticeItem-images-lot'}>
                     <Image.PreviewGroup>
                         {files.images.map((image, idx) => (
-                            <div key={idx} className="ArticleItem-image-wrapper">
+                            <div key={idx} className="NoticeItem-image-wrapper">
                                 <Image src={`${MEDIA_API_URL}/${image}`} fallback={notFoundImage} />
                             </div>
                         ))}
                     </Image.PreviewGroup>
                 </div>
             ) : null}
-            <div className="ArticleItem-content">
+            <div className="NoticeItem-content">
                 <p>{content}</p>
             </div>
-            <div className="ArticleItem-detail-info">
-                <div className="ArticleItem-participants">
-                    <h2>참여자</h2>
-                    {participants.map((name, idx) => (
-                        <li key={idx}>{name}</li>
-                    ))}
-                </div>
-                <div className="ArticleItem-clubs">
-                    <h2>기여한 동아리</h2>
-                    {clubs.map((club, idx) => (
-                        <li key={idx}>{club}</li>
-                    ))}
-                </div>
-                <div className="ArticleItem-kinds">
-                    <h2>분야</h2>
-                    {kinds.map((kind, idx) => (
-                        <li key={idx}>{kind}</li>
-                    ))}
-                </div>
-            </div>
             {youtubeURLs.length > 0 && (
-                <div className="ArticleItem-youtube">
+                <div className="NoticeItem-youtube">
                     {youtubeURLs.map((url, idx) => (
                         <YouTube videoId={url} opts={opts} key={idx} />
                     ))}
                 </div>
             )}
-            <div className="ArticleItem-file">
+            <div className="NoticeItem-file">
                 {files.pdfs.length > 0 && (
-                    <div className="ArticleItem-file-pdf">
+                    <div className="NoticeItem-file-pdf">
                         pdf 파일:{' '}
                         {files.pdfs.map((pdf, idx) => (
                             <a
@@ -83,7 +62,7 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                     </div>
                 )}
                 {files.zips.length > 0 && (
-                    <div className="ArticleItem-file-zip">
+                    <div className="NoticeItem-file-zip">
                         zip 파일:{' '}
                         {files.zips.map((file, idx) => (
                             <a
@@ -101,4 +80,4 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
     );
 };
 
-export default ArticleItem;
+export default NoticeItem;

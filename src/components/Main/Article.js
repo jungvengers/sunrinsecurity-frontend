@@ -3,9 +3,9 @@ import { Layout } from 'antd';
 
 import Side from './Side/Side';
 import Header from './Header/Header';
-import Content from './Content/Content';
+import ArticleList from './Content/ArticleList';
 
-const Main = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
+const Article = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
     const [category, setCategory] = useState(null);
     const [clubs, setClubs] = useState([]);
     const [kinds, setKinds] = useState([]);
@@ -17,7 +17,7 @@ const Main = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
     const handleDeleteKind = (e) => setKinds(kinds.filter((kind) => kind !== e.key));
 
     return (
-        <Layout className="Main" style={{ height: '100vh' }}>
+        <Layout className="Article" style={{ height: '100vh' }}>
             <Header />
             <Layout style={{ height: '90%', overflow: 'hidden' }}>
                 <Side
@@ -27,18 +27,27 @@ const Main = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
                     handleAddkind={handleAddkind}
                     handleDeleteKind={handleDeleteKind}
                 />
-                <Content
-                    articles={articles}
-                    category={category}
-                    clubs={clubs}
-                    kinds={kinds}
-                    readingStatus={readingStatus}
-                    readArticle={readArticle}
-                    readMoreArticle={readMoreArticle}
-                />
+                <Layout.Content
+                    className="site-layout-background"
+                    style={{
+                        height: '100%',
+                        padding: '24, 24, 0, 24',
+                        margin: 0,
+                        minHeight: 280,
+                    }}>
+                    <ArticleList
+                        articles={articles}
+                        category={category}
+                        clubs={clubs}
+                        kinds={kinds}
+                        readingStatus={readingStatus}
+                        readArticle={readArticle}
+                        readMoreArticle={readMoreArticle}
+                    />
+                </Layout.Content>
             </Layout>
         </Layout>
     );
 };
 
-export default Main;
+export default Article;
