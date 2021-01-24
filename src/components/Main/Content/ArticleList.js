@@ -8,12 +8,11 @@ import './ArticleList.scss';
 import { LoadingOutlined } from '@ant-design/icons';
 
 const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArticle, readMoreArticle }) => {
-    const [articlePerPage, setArticlePerPage] = useState(5);
+    const [perPage, setPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
-    console.log(articles);
     useEffect(() => {
         const queryStringData = {
-            articlePerPage,
+            perPage,
             currentPage: 1,
             category,
             clubs,
@@ -21,11 +20,11 @@ const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArti
         };
         readArticle(queryStringData);
         setCurrentPage(2);
-    }, [category, clubs, kinds]);
+    }, [category, clubs, kinds, perPage, readArticle]);
 
     const getArticles = () => {
         const queryStringData = {
-            articlePerPage,
+            perPage,
             currentPage,
             category,
             clubs,
@@ -34,7 +33,6 @@ const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArti
         readMoreArticle(queryStringData);
         setCurrentPage(currentPage + 1);
     };
-    console.log(readingStatus.loading);
     return (
         <div className="ArticleList" id="scrollableDiv">
             <InfiniteScroll
@@ -45,14 +43,14 @@ const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArti
                 scrollableTarget="scrollableDiv">
                 {readingStatus.loading ? (
                     <Spin
-                        indicator={<LoadingOutlined style={{ margin: '20 auto', fontSize: '40px' }} spin />}
+                        indicator={<LoadingOutlined style={{ margin: '20 auto', fontSize: '50px' }} spin />}
                     />
                 ) : articles.length > 0 ? (
                     articles.map((article) => {
                         return (
                             <Card
                                 title={article.isContestWork ? '대회실적' : '개인 프로젝트'}
-                                style={{ width: '100%', marginTop: '15px' }}
+                                style={{ width: '100%', textAlign: 'left', marginTop: '15px' }}
                                 key={article._id}>
                                 <ArticleItem
                                     clubs={article.clubs}
