@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MEDIA_API_URL, ARTICLE_API_URL } from '../../config/config';
+import { MEDIA_API_URL, ARTICLE_API_URL, NOTICEBOARD_API_URL } from '../../config/config';
 
 const headers = {
     headers: {
@@ -19,3 +19,4 @@ export const uploadImages = async (data) => {
     );
 };
 export const uploadArticle = async (data) => await axios.post(ARTICLE_API_URL, data, headers);
+export const uploadNotice = async (data) => await axios.post(NOTICEBOARD_API_URL, data, headers);
