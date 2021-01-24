@@ -1,25 +1,25 @@
 import React from 'react';
 
 import Header from '../Main/Header/Header';
-import ManageList from './ManageList';
+import ManageNoticeList from './ManageNoticeList';
 
 import history from '../../utils/lib/history';
 
 import './Manage.scss';
 
-const Manage = ({ articles, readingStatus, readListArticle, deleteArticle }) => {
+const ManageNotice = ({ notices, readingStatus, readListNotice, deleteNotice }) => {
     if (!localStorage.getItem('accessToken')) history.push('/');
     return (
         <div className="Manage">
             <Header />
-            <ManageList
-                articles={articles}
+            <ManageNoticeList
+                notices={notices}
                 readingStatus={readingStatus}
-                readListArticle={readListArticle}
-                deleteArticle={deleteArticle}
+                readListNotice={readListNotice}
+                deleteNotice={deleteNotice}
             />
         </div>
     );
 };
 
-export default Manage;
+export default ManageNotice;
