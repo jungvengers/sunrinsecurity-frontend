@@ -15,7 +15,7 @@ import RegisterContainer from './containers/RegisterContainer';
 
 import history from './utils/lib/history';
 
-import './App.css';
+import './App.scss';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 const App = () => {
