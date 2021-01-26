@@ -12,7 +12,7 @@ const headers = {
 export const readListArticles = async (data) => {
     const queryString = createQueryString(data);
     const response = await axios.get(`${ARTICLE_API_URL}?${queryString}`);
-    return response.data.articles;
+    return response.data;
 };
 export const readAnArticle = async (data) => await axios.get(`${ARTICLE_API_URL}/${data}`);
 export const updateArticle = async (data) =>
