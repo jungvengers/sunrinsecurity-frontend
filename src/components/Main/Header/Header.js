@@ -9,7 +9,7 @@ import { CommentOutlined, ProjectOutlined, SoundOutlined, PaperClipOutlined } fr
 const Header = () => {
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
-        window.location.reload();
+        window.location.pathname = '/';
     };
     return (
         <Layout.Header className="Header">
@@ -17,7 +17,7 @@ const Header = () => {
             <Menu theme="dark" mode="horizontal" style={{ float: 'right' }}>
                 {localStorage.getItem('accessToken') ? (
                     <>
-                        <Menu.SubMenu key="1" title="학과">
+                        <Menu.SubMenu key="1" title="메뉴">
                             {/* <Menu.Item key="about:1" icon={<SearchOutlined />}>
                                 <Link to="/">학과 소개</Link>
                             </Menu.Item> */}
@@ -50,15 +50,15 @@ const Header = () => {
                     </>
                 ) : (
                     <>
-                        <Menu.SubMenu key="1" title="학과">
+                        <Menu.SubMenu key="1" title="메뉴">
                             {/* <Menu.Item key="about:1" icon={<SearchOutlined />}>
                                 <Link to="/">학과 소개</Link>
                             </Menu.Item> */}
-                            <Menu.Item key="about:2" icon={<CommentOutlined />}>
-                                <Link to="/notice">학과 소식</Link>
-                            </Menu.Item>
                             <Menu.Item key="about:3" icon={<ProjectOutlined />}>
                                 <Link to="/article">프로젝트 전시장</Link>
+                            </Menu.Item>
+                            <Menu.Item key="about:2" icon={<CommentOutlined />}>
+                                <Link to="/notice">학과 소식</Link>
                             </Menu.Item>
                         </Menu.SubMenu>
                         <Menu.Item key="2">
