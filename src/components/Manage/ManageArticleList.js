@@ -9,7 +9,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 const ManageArticleList = ({ articles, readingStatus, readListArticle, deleteArticle }) => {
     useEffect(() => {
         const queryStringData = {
-            writer: localStorage.getItem('username'),
+            perPage: 1,
         };
         readListArticle(queryStringData);
     }, [readListArticle]);

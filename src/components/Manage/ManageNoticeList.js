@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spin, Card, Result } from 'antd';
 
 import ManageNoticeItem from './ManageNoticeItem';
@@ -7,12 +8,15 @@ import './ManageList.scss';
 import { LoadingOutlined } from '@ant-design/icons';
 
 const ManageNoticeList = ({ notices, readingStatus, readListNotice, deleteNotice }) => {
-    useEffect(() => {
+    const getNotices = () => {
         const queryStringData = {
-            writer: localStorage.getItem('username'),
+            perPage: 1,
         };
         readListNotice(queryStringData);
-    }, [readListNotice]);
+    };
+    useEffect(() => {
+        getNotices();
+    }, []);
     return (
         <div className="ManageList">
             {readingStatus.loading ? (
