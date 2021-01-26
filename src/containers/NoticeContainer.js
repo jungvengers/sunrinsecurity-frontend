@@ -1,25 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Notice from '../components/Main/Notice';
-import { readNoticeAsync, readMoreNoticeAsync } from '../store/actions/noticeAction';
+import { readListNoticeAsync } from '../store/actions/noticeAction';
 
-const NoticeContainer = ({ notices, readNotice, readNoticeAsync, readMoreNoticeAsync }) => {
-    return (
-        <Notice
-            notices={notices}
-            readingStatus={readNotice}
-            readNotice={readNoticeAsync}
-            readMoreNotice={readMoreNoticeAsync}
-        />
-    );
+const NoticeContainer = ({ notices, readListNotice, readListNoticeAsync }) => {
+    return <Notice notices={notices} readingStatus={readListNotice} readListNotice={readListNoticeAsync} />;
 };
 
 export default connect(
     // mapStateToProps
     ({ notice }) => ({
         notices: notice.notices,
-        readNotice: notice.readNotice,
+        readListNotice: notice.readListNotice,
     }),
     // mapDispatchToProps
-    { readNoticeAsync, readMoreNoticeAsync }
+    { readListNoticeAsync }
 )(NoticeContainer);
