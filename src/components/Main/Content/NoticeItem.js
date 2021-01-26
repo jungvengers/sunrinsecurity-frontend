@@ -3,6 +3,7 @@ import { Spin, Image, PageHeader, Descriptions } from 'antd';
 import YouTube from 'react-youtube';
 
 import Header from '../Header/Header';
+import history from '../../../utils/lib/history';
 import { MEDIA_API_URL } from '../../../config/config';
 import { getYtpSize } from '../../../utils/lib/getYtpSize';
 
@@ -45,10 +46,7 @@ const NoticeItem = ({
                 />
             ) : (
                 <div className="NoticeItem-wrapper">
-                    <PageHeader
-                        ellipsis={false}
-                        onBack={() => (window.location.pathname = '/notice')}
-                        title={title}>
+                    <PageHeader ellipsis={false} onBack={() => history.push('/notice')} title={title}>
                         <Descriptions size="small" column={3}>
                             <Descriptions.Item label="작성자">{writer}</Descriptions.Item>
                             <Descriptions.Item label="작성 날짜">{createdAt.slice(0, 10)}</Descriptions.Item>
