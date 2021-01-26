@@ -8,6 +8,8 @@ import NoticeSubmit from '../Submit/NoticeSubmit';
 import Title from '../Input/Title';
 import Video from '../Input/Video';
 import Content from '../Input/Content';
+import history from '../../../utils/lib/history';
+import validationToken from '../../../utils/lib/validationToken';
 
 import './EditArticle.scss';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -30,6 +32,8 @@ const EditArticle = ({
     changeContent,
 }) => {
     useEffect(() => {
+        if (!localStorage.getItem('accessToken')) history.push('/');
+        validationToken();
         readAnNotice(match.params.id);
     }, [readAnNotice, match.params.id]);
     const props = {

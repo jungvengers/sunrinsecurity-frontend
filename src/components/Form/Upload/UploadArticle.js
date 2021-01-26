@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Header from '../../Main/Header/Header';
 import Input from '../Input/Input';
 import ArticleSubmit from '../Submit/ArticleSubmit';
-
 import history from '../../../utils/lib/history';
+import validationToken from '../../../utils/lib/validationToken';
 
 import './UploadArticle.scss';
 
@@ -33,7 +33,10 @@ const UploadArticle = ({
         files: imageFiles,
         content,
     };
-    if (!localStorage.getItem('accessToken')) history.push('/');
+    useEffect(() => {
+        if (!localStorage.getItem('accessToken')) history.push('/');
+        validationToken();
+    }, []);
     return (
         <div className="UploadArticle">
             <Header />

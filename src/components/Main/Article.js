@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout } from 'antd';
 
 import Side from './Side/Side';
 import Header from './Header/Header';
 import ArticleList from './Content/ArticleList';
+import validationToken from '../../utils/lib/validationToken';
 
 const Article = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
     const [category, setCategory] = useState(null);
@@ -16,6 +17,7 @@ const Article = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
     const handleAddkind = (e) => setKinds(kinds.concat(e.key));
     const handleDeleteKind = (e) => setKinds(kinds.filter((kind) => kind !== e.key));
 
+    useEffect(() => validationToken(), []);
     return (
         <Layout className="Article" style={{ height: '100vh' }}>
             <Header />

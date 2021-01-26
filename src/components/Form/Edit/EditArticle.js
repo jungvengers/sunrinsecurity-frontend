@@ -11,6 +11,8 @@ import Kind from '../Input/Kind';
 import Category from '../Input/Category';
 import Video from '../Input/Video';
 import Content from '../Input/Content';
+import history from '../../../utils/lib/history';
+import validationToken from '../../../utils/lib/validationToken';
 
 import './EditArticle.scss';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -39,6 +41,8 @@ const EditArticle = ({
     changeContent,
 }) => {
     useEffect(() => {
+        if (!localStorage.getItem('accessToken')) history.push('/');
+        validationToken();
         readAnArticle(match.params.id);
     }, [readAnArticle, match.params.id]);
     const props = {

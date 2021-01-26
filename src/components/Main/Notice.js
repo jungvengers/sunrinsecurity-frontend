@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layout } from 'antd';
 
 import Header from './Header/Header';
 import NoticeList from './Content/NoticeList';
+import validationToken from '../../utils/lib/validationToken';
 
 const Notice = ({ notices, readingStatus, readListNotice }) => {
+    useEffect(() => validationToken(), []);
     return (
         <Layout className="Notice" style={{ height: '100vh' }}>
             <Header />
