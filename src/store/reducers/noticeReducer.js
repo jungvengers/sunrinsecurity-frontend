@@ -5,7 +5,15 @@ import { reducerUtils } from '../../utils/lib/asyncUtils';
 
 const initialState = {
     notices: [],
-    readNotice: reducerUtils.initial(),
+    title: '',
+    content: '',
+    files: [],
+    youtubeURLs: [],
+    createdAt: '',
+    updatedAt: '',
+    writer: '',
+    readListNotice: reducerUtils.initial(),
+    readAnNotice: reducerUtils.initial(),
 };
 
 const notice = handleActions(
@@ -14,26 +22,38 @@ const notice = handleActions(
             ...state,
             notices: action.payload,
         }),
-        [actions.ADD_NOTICE]: (state, action) => ({
+        // 글 복수 조회
+        [actions.READ_LIST_NOTICE_LOADING]: (state, action) => ({
             ...state,
-            notices: state.notices.concat(action.payload),
+            readListNotice: reducerUtils.loading(),
         }),
-        [actions.REMOVE_NOTICE]: (state, action) => ({
+        [actions.READ_LIST_NOTICE_SUCCESS]: (state, action) => ({
             ...state,
-            notices: state.notices.filter((notice) => notice._id !== action.payload),
+            readListNotice: reducerUtils.success(action.payload),
         }),
-        // 글 조회
-        [actions.READ_NOTICE_LOADING]: (state, action) => ({
+        [actions.READ_LIST_NOTICE_ERROR]: (state, action) => ({
             ...state,
-            readNotice: reducerUtils.loading(),
+            readListNotice: reducerUtils.error(action.payload),
         }),
-        [actions.READ_NOTICE_SUCCESS]: (state, action) => ({
+        // 글 단일 조회
+        [actions.READ_AN_NOTICE_LOADING]: (state, action) => ({
             ...state,
-            readNotice: reducerUtils.success(action.payload),
+            readAnNotice: reducerUtils.loading(),
         }),
-        [actions.READ_NOTICE_ERROR]: (state, action) => ({
+        [actions.READ_AN_NOTICE_SUCCESS]: (state, action) => ({
             ...state,
-            readNotice: reducerUtils.error(action.payload),
+            title: action.payload.title,
+            content: action.payload.content,
+            files: action.payload.images,
+            youtubeURLs: action.payload.youtubeURLs,
+            createdAt: action.payload.createdAt,
+            updatedAt: action.payload.updatedAt,
+            writer: action.payload.writer,
+            readAnNotice: reducerUtils.success(action.payload),
+        }),
+        [actions.READ_AN_NOTICE_ERROR]: (state, action) => ({
+            ...state,
+            readAnNotice: reducerUtils.error(action.payload),
         }),
     },
     initialState
