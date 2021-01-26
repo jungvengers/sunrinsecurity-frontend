@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form } from 'antd';
 
 import Header from '../../Main/Header/Header';
@@ -7,8 +7,8 @@ import Title from '../Input/Title';
 import Content from '../Input/Content';
 import File from '../Input/File';
 import Video from '../Input/Video';
-
 import history from '../../../utils/lib/history';
+import validationToken from '../../../utils/lib/validationToken';
 
 import './UploadNotice.scss';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -30,7 +30,10 @@ const UploadNotice = ({
         content,
         files: imageFiles,
     };
-    if (!localStorage.getItem('accessToken')) history.push('/');
+    useEffect(() => {
+        if (!localStorage.getItem('accessToken')) history.push('/');
+        validationToken();
+    }, []);
     return (
         <div className="UploadNotice">
             <Header />

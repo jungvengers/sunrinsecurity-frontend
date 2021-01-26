@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import validationToken from '../../utils/lib/validationToken';
 
 import './Register.scss';
 
@@ -23,6 +25,8 @@ const Register = ({ registerState, register }) => {
                 return '회원가입에 실패했습니다, 다시 시도해주세요.';
         }
     };
+
+    useEffect(() => validationToken(), []);
 
     return (
         <div className="Register">
