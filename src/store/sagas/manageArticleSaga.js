@@ -6,8 +6,11 @@ import * as formAPI from '../../utils/api/form';
 
 export function* readListArticleSaga(action) {
     try {
-        let result = yield call(articleAPI.readListArticles, action.payload);
-        yield (result = result.filter((article) => article.writer === localStorage.getItem('username')));
+        const { pages_length } = yield call(articleAPI.readListArticles, action.payload);
+        let result = yield call(articleAPI.readListArticles, { perPage: pages_length });
+        yield (result = result.articles.filter(
+            (article) => article.writer === localStorage.getItem('username')
+        ));
         yield put({ type: actions.INIT_ARTICLE, payload: result });
         yield put({ type: actions.READ_LIST_ARTICLE_SUCCESS, error: false, payload: result });
     } catch (error) {
