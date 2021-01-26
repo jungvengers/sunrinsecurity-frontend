@@ -10,6 +10,7 @@ import UploadNoticeContainer from './containers/UploadNoticeContainer';
 import UploadArticleContainer from './containers/UploadArticleContainer';
 import ArticleContainer from './containers/ArticleContainer';
 import NoticeContainer from './containers/NoticeContainer';
+import NoticeItemContainer from './containers/NoticeItemContainer';
 import LoginContainer from './containers/LoginContainer';
 import RegisterContainer from './containers/RegisterContainer';
 
@@ -25,6 +26,7 @@ const App = () => {
                 <Route exact path="/" component={ArticleContainer} />
                 <Route exact path="/article" component={ArticleContainer} />
                 <Route exact path="/notice" component={NoticeContainer} />
+                <Route exact path="/notice/:id" component={NoticeItemContainer} />
                 <Route exact path="/login" component={LoginContainer} />
                 <Route exact path="/register" component={RegisterContainer} />
                 <Route exact path="/admin/article" component={ManageArticleContainer} />

@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Header from '../Main/Header/Header';
 import ManageNoticeList from './ManageNoticeList';
-
 import history from '../../utils/lib/history';
+import validationToken from '../../utils/lib/validationToken';
 
 import './Manage.scss';
 
 const ManageNotice = ({ notices, readingStatus, readListNotice, deleteNotice }) => {
-    if (!localStorage.getItem('accessToken')) history.push('/');
+    useEffect(() => {
+        if (!localStorage.getItem('accessToken')) history.push('/');
+        validationToken();
+    });
     return (
         <div className="Manage">
             <Header />

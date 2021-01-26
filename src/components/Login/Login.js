@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+
+import validationToken from '../../utils/lib/validationToken';
 
 import './Login.scss';
 
@@ -13,8 +15,9 @@ const Login = ({ loginState, login }) => {
     const handleChange = (newValue, setValue) => setValue(newValue);
     const handleSubmit = () => login({ username, password });
 
-    if (localStorage.getItem('accessToken')) history.push('/');
+    useEffect(() => validationToken(), []);
 
+    if (localStorage.getItem('accessToken')) history.push('/');
     return (
         <div className="Login">
             <h2>정보보호과 홍보 페이지</h2>
@@ -36,6 +39,7 @@ const Login = ({ loginState, login }) => {
                 />
                 <input type="button" value="로그인" onClick={handleSubmit} />
                 <Link to="/register">관리자 계정 만들러 가기</Link>
+                <Link to="/">홈으로 가기</Link>
             </div>
         </div>
     );

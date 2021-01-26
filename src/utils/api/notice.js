@@ -12,7 +12,7 @@ const headers = {
 export const readListNotice = async (data) => {
     const queryString = createQueryString(data);
     const response = await axios.get(`${NOTICEBOARD_API_URL}?${queryString}`);
-    return response.data.notices;
+    return response.data;
 };
 export const readAnNotice = async (data) => await axios.get(`${NOTICEBOARD_API_URL}/${data}`);
 export const updateNotice = async (data) =>

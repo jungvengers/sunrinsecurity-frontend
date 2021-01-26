@@ -1,8 +1,5 @@
 import { createAction } from 'redux-actions';
 
-export const INIT_NOTICE = 'manage/INIT_NOTICE';
-export const REMOVE_NOTICE = 'manage/REMOVE_NOTICE';
-
 export const READ_LIST_NOTICE_LOADING = 'manage/READ_LIST_NOTICE_LOADING';
 export const READ_LIST_NOTICE_SUCCESS = 'manage/READ_LIST_NOTICE_SUCCESS';
 export const READ_LIST_NOTICE_ERROR = 'manage/READ_LIST_NOTICE_ERROR';
@@ -20,6 +17,8 @@ export const DELETE_NOTICE_SUCCESS = 'manage/DELETE_NOTICE_SUCCES';
 export const DELETE_NOTICE_ERROR = 'manage/DELETE_NOTICE_ERROR';
 
 //TODO 액션 이름 업데이트
+export const INIT_NOTICE = 'manage/INIT_NOTICE';
+export const REMOVE_NOTICE = 'manage/REMOVE_NOTICE';
 export const CHANGE_TITLE = 'manage/CHANGE_TITLE';
 export const ADD_IMAGE_FILE = 'manage/ADD_IMAGE_FILE';
 export const REMOVE_IMAGE_FILE = 'manage/REMOVE_IMAGE_FILE';

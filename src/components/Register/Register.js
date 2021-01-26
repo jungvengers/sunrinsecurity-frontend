@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import validationToken from '../../utils/lib/validationToken';
 
 import './Register.scss';
 
@@ -24,6 +26,8 @@ const Register = ({ registerState, register }) => {
         }
     };
 
+    useEffect(() => validationToken(), []);
+
     return (
         <div className="Register">
             <h2>정보보호과 홍보 페이지</h2>
@@ -46,7 +50,7 @@ const Register = ({ registerState, register }) => {
                 <input
                     type="text"
                     value={alias}
-                    placeholder="Unifox계정, 테스트용 게정"
+                    placeholder="별칭"
                     onChange={(e) => handleChange(e.target.value, setAlias)}
                 />
                 <div className="secret">

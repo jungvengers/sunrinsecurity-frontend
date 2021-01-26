@@ -7,10 +7,6 @@ const initialState = {
     notices: [],
     id: '',
     title: '',
-    participants: '',
-    clubs: [],
-    kinds: [],
-    isContestWork: null,
     content: '',
     uploadedFiles: [],
     files: [],
@@ -21,7 +17,7 @@ const initialState = {
     updateNotice: reducerUtils.initial(),
 };
 
-const manage = handleActions(
+const manageNotice = handleActions(
     {
         [actions.INIT_NOTICE]: (state, action) => ({
             ...state,
@@ -68,7 +64,7 @@ const manage = handleActions(
             ...state,
             readListNotice: reducerUtils.error(action.payload),
         }),
-        // 글 단일 로드
+        // 글 단일 조회
         [actions.READ_AN_NOTICE_LOADING]: (state, action) => ({
             ...state,
             readAnNotice: reducerUtils.loading(),
@@ -119,4 +115,4 @@ const manage = handleActions(
     initialState
 );
 
-export default manage;
+export default manageNotice;
