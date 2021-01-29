@@ -30,18 +30,18 @@ const Header = () => {
                         </Menu.SubMenu>
                         <Menu.SubMenu key="2" title="글 작성">
                             <Menu.Item key="write:1" icon={<SoundOutlined />}>
-                                <Link to="/admin/form/article">홍보글</Link>
+                                <Link to="/admin/form/article">프로젝트</Link>
                             </Menu.Item>
                             <Menu.Item key="write:2" icon={<PaperClipOutlined />}>
-                                <Link to="/admin/form/notice">게시글</Link>
+                                <Link to="/admin/form/notice">학과 소식</Link>
                             </Menu.Item>
                         </Menu.SubMenu>
                         <Menu.SubMenu key="3" title="글 관리">
                             <Menu.Item key="manage:1" icon={<SoundOutlined />}>
-                                <Link to="/admin/article">홍보글</Link>
+                                <Link to="/admin/article">프로젝트</Link>
                             </Menu.Item>
                             <Menu.Item key="manage:2" icon={<PaperClipOutlined />}>
-                                <Link to="/admin/notice">게시글</Link>
+                                <Link to="/admin/notice">학과 소식</Link>
                             </Menu.Item>
                         </Menu.SubMenu>
                         <Menu.Item key="4" onClick={handleLogout}>
