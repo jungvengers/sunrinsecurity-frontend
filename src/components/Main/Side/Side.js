@@ -21,8 +21,8 @@ const Side = ({ handleToggleCategory, handleAddClub, handleDeleteClub, handleAdd
                 onCollapse={handleCollapse}>
                 <Menu mode="inline" onSelect={handleToggleCategory}>
                     <SubMenu disabled={false} key="sub1" icon={<AppstoreOutlined />} title="실적 종류">
-                        <Menu.Item key="true">교외 실적</Menu.Item>
                         <Menu.Item key="false">교내 실적</Menu.Item>
+                        <Menu.Item key="true">교외 실적</Menu.Item>
                     </SubMenu>
                 </Menu>
                 <Menu mode="inline" onSelect={handleAddClub} onDeselect={handleDeleteClub} multiple>
