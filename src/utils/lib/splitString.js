@@ -4,8 +4,8 @@ export const splitParticipants = (names) => {
         const participants = names.split(' ');
         const newNames = [];
         participants.map((name) => {
-            if (name.length < 3) newNames.push(name[0] + 'X');
-            else newNames.push(name[0] + 'X' + name[name.length - 1]);
+            if (name.length < 3) newNames.push(name[0] + 'O');
+            else newNames.push(name[0] + 'O' + name[name.length - 1]);
         });
         return newNames;
     } catch (error) {
