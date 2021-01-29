@@ -43,12 +43,14 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                         <li key={idx}>{name}</li>
                     ))}
                 </div>
-                <div className="ArticleItem-clubs">
-                    <h2>기여한 동아리</h2>
-                    {clubs.map((club, idx) => (
-                        <li key={idx}>{club}</li>
-                    ))}
-                </div>
+                {clubs.length > 0 && (
+                    <div className="ArticleItem-clubs">
+                        <h2>기여한 동아리</h2>
+                        {clubs.map((club, idx) => (
+                            <li key={idx}>{club}</li>
+                        ))}
+                    </div>
+                )}
                 <div className="ArticleItem-kinds">
                     <h2>분야</h2>
                     {kinds.map((kind, idx) => (
@@ -73,7 +75,7 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                                 target="_blank"
                                 rel="noreferrer"
                                 key={idx}>
-                                {pdf + ' '}
+                                {pdf.split('-').splice(1).join('-') + ' '}
                             </a>
                         ))}
                     </div>
@@ -81,13 +83,13 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                 {files.zips.length > 0 && (
                     <div className="ArticleItem-file-zip">
                         zip 파일:{' '}
-                        {files.zips.map((file, idx) => (
+                        {files.zips.map((zip, idx) => (
                             <a
-                                href={`https://api.jungvengers.com/media/${file}`}
+                                href={`https://api.jungvengers.com/media/${zip}`}
                                 target="_blank"
                                 rel="noreferrer"
                                 key={idx}>
-                                {file + ' '}
+                                {zip.split('-').splice(1).join('-') + ' '}
                             </a>
                         ))}
                     </div>
