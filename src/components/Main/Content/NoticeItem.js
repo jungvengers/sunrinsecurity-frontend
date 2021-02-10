@@ -83,7 +83,7 @@ const NoticeItem = ({
                                 pdf 파일:{' '}
                                 {files.pdfs.map((pdf, idx) => (
                                     <a
-                                        href={`https://api.jungvengers.com/media/${pdf}`}
+                                        href={`${MEDIA_API_URL}/${pdf}`}
                                         target="_blank"
                                         rel="noreferrer"
                                         key={idx}>
@@ -97,7 +97,7 @@ const NoticeItem = ({
                                 zip 파일:{' '}
                                 {files.zips.map((file, idx) => (
                                     <a
-                                        href={`https://api.jungvengers.com/media/${file}`}
+                                        href={`${MEDIA_API_URL}/${file}`}
                                         target="_blank"
                                         rel="noreferrer"
                                         key={idx}>
