@@ -70,11 +70,7 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                     <div className="ArticleItem-file-pdf">
                         pdf 파일:{' '}
                         {files.pdfs.map((pdf, idx) => (
-                            <a
-                                href={`https://api.jungvengers.com/media/${pdf}`}
-                                target="_blank"
-                                rel="noreferrer"
-                                key={idx}>
+                            <a href={`${MEDIA_API_URL}/${pdf}`} target="_blank" rel="noreferrer" key={idx}>
                                 {pdf.split('-').splice(1).join('-') + ' '}
                             </a>
                         ))}
@@ -84,11 +80,7 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                     <div className="ArticleItem-file-zip">
                         zip 파일:{' '}
                         {files.zips.map((zip, idx) => (
-                            <a
-                                href={`https://api.jungvengers.com/media/${zip}`}
-                                target="_blank"
-                                rel="noreferrer"
-                                key={idx}>
+                            <a href={`${MEDIA_API_URL}/${zip}`} target="_blank" rel="noreferrer" key={idx}>
                                 {zip.split('-').splice(1).join('-') + ' '}
                             </a>
                         ))}
