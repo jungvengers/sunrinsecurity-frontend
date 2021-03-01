@@ -53,7 +53,16 @@
     }
 
     .ArticleItem-content {
-        p {
+        textarea {
+            background: white;
+            width: 100%;
+            border: none;
+            overflow: hidden;
+            outline: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            resize: none;
             text-align: justify;
         }
     }
@@ -111,7 +120,8 @@
         }
 
         .ArticleItem-content {
-            p {
+            textarea {
+                width: 100%;
                 padding: 10px;
                 margin: 5px 2px;
                 font-size: 1.1rem;
@@ -151,7 +161,8 @@
             }
         }
         .ArticleItem-content {
-            p {
+            textarea {
+                width: 100%;
                 margin: 7px 0 20px 0;
                 text-align: justify;
                 font-size: 1.2rem;
@@ -196,7 +207,8 @@
             }
         }
         .ArticleItem-content {
-            p {
+            textarea {
+                width: 100%;
                 margin: 7px 0;
                 font-size: 1.1rem;
             }

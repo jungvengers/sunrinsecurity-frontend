@@ -1,5 +1,5 @@
-import React from 'react';
-import { Input, Image } from 'antd';
+import React, { useRef, useEffect } from 'react';
+import { Image } from 'antd';
 import YouTube from 'react-youtube';
 
 import { MEDIA_API_URL } from '../../../config/config';
@@ -9,6 +9,7 @@ import './ArticleItem.scss';
 import notFoundImage from '../../../assets/not-found-image.jpg';
 
 const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }) => {
+    const ref = useRef(null);
     let ytpSize = getYtpSize();
     let splittedFiles = { images: [], pdfs: [], zips: [] };
     files.map((file) => {
@@ -18,7 +19,10 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
         else if (file.indexOf('.zip') !== -1) splittedFiles.zips.push(file);
     });
     files = splittedFiles;
-
+    useEffect(() => {
+        // console.log(ref.current.scrollHeight);
+        ref.current.style.height = ref.current.scrollHeight + 'px';
+    }, []);
     return (
         <div className="ArticleItem">
             {files.images.length > 0 ? (
@@ -34,7 +38,9 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                 </div>
             ) : null}
             <div className="ArticleItem-content">
-                <pre style={{ fontFamily: 'inherit', padding: '10px' }}>{content}</pre>
+                <textarea ref={ref} disabled>
+                    {content}
+                </textarea>
             </div>
             <div className="ArticleItem-detail-info">
                 <div className="ArticleItem-participants">
