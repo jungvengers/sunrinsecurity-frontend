@@ -23,10 +23,6 @@ const NoticeItem = ({
     readingStatus,
     readAnNotice,
 }) => {
-    useEffect(() => {
-        readAnNotice(match.params.id);
-    }, []);
-
     let ytpSize = getYtpSize();
     let splittedFiles = { images: [], pdfs: [], zips: [] };
     files.map((file) => {
@@ -37,6 +33,10 @@ const NoticeItem = ({
     });
     files = splittedFiles;
 
+    useEffect(() => {
+        readAnNotice(match.params.id);
+    }, []);
+
     return (
         <div className="NoticeItem">
             <Header />
@@ -46,7 +46,11 @@ const NoticeItem = ({
                 />
             ) : (
                 <div className="NoticeItem-wrapper">
-                    <PageHeader ellipsis={false} onBack={() => history.push('/notice')} title={title}>
+                    <PageHeader
+                        style={{ borderBottom: '1px solid #ebedf0' }}
+                        ellipsis={false}
+                        onBack={() => history.push('/notice')}
+                        title={title}>
                         <Descriptions size="small" column={3}>
                             <Descriptions.Item label="작성자">{writer}</Descriptions.Item>
                             <Descriptions.Item label="작성 날짜">{createdAt.slice(0, 10)}</Descriptions.Item>
@@ -68,7 +72,7 @@ const NoticeItem = ({
                         </div>
                     ) : null}
                     <div className="NoticeItem-content">
-                        <p>{content}</p>
+                        <pre>{content}</pre>
                     </div>
                     {youtubeURLs.length > 0 && (
                         <div className="NoticeItem-youtube">
