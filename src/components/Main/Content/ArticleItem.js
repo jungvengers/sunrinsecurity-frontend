@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'antd';
+import { Input, Image } from 'antd';
 import YouTube from 'react-youtube';
 
 import { MEDIA_API_URL } from '../../../config/config';
@@ -34,7 +34,7 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                 </div>
             ) : null}
             <div className="ArticleItem-content">
-                <p>{content}</p>
+                <pre style={{ fontFamily: 'inherit', padding: '10px' }}>{content}</pre>
             </div>
             <div className="ArticleItem-detail-info">
                 <div className="ArticleItem-participants">
