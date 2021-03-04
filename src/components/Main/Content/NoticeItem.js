@@ -25,6 +25,8 @@ const NoticeItem = ({
 }) => {
     let ytpSize = getYtpSize();
     let splittedFiles = { images: [], pdfs: [], zips: [] };
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+
     files.map((file) => {
         if (file.indexOf('.jpg') !== -1 || file.indexOf('.jpeg') !== -1 || file.indexOf('.png') !== -1)
             splittedFiles.images.push(file);
@@ -32,6 +34,12 @@ const NoticeItem = ({
         else if (file.indexOf('.zip') !== -1) splittedFiles.zips.push(file);
     });
     files = splittedFiles;
+
+    const detectUrls = () => ({
+        __html: content.replaceAll(urlRegex, (url) => {
+            return `<a href="${url}" target="_blank">${url}</a>`;
+        }),
+    });
 
     useEffect(() => {
         readAnNotice(match.params.id);
@@ -72,7 +80,7 @@ const NoticeItem = ({
                         </div>
                     ) : null}
                     <div className="NoticeItem-content">
-                        <pre>{content}</pre>
+                        <pre dangerouslySetInnerHTML={detectUrls()}></pre>
                     </div>
                     {youtubeURLs.length > 0 && (
                         <div className="NoticeItem-youtube">

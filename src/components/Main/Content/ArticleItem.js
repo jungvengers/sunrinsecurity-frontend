@@ -11,6 +11,8 @@ import notFoundImage from '../../../assets/not-found-image.jpg';
 const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }) => {
     let ytpSize = getYtpSize();
     let splittedFiles = { images: [], pdfs: [], zips: [] };
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+
     files.map((file) => {
         if (file.indexOf('.jpg') !== -1 || file.indexOf('.jpeg') !== -1 || file.indexOf('.png') !== -1)
             splittedFiles.images.push(file);
@@ -18,6 +20,13 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
         else if (file.indexOf('.zip') !== -1) splittedFiles.zips.push(file);
     });
     files = splittedFiles;
+
+    const detectUrls = () => ({
+        __html: content.replaceAll(urlRegex, (url) => {
+            return `<a href="${url}" target="_blank">${url}</a>`;
+        }),
+    });
+
     return (
         <div className="ArticleItem">
             {files.images.length > 0 ? (
@@ -33,7 +42,7 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                 </div>
             ) : null}
             <div className="ArticleItem-content">
-                <pre>{content}</pre>
+                <pre dangerouslySetInnerHTML={detectUrls()}></pre>
             </div>
             <div className="ArticleItem-detail-info">
                 <div className="ArticleItem-participants">
