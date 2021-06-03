@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button, Image } from 'antd';
+import { Button } from 'antd';
 
 import history from '../../utils/lib/history';
 
 import './ManageItem.scss';
 
-const ManageItem = ({ content, files, createDate, id, deleteArticle }) => {
+const ManageArticleItem = ({ content, createdDate, id, deleteArticle }) => {
     const handleDelete = () => deleteArticle(id);
-    const handleManage = () => history.push(`/admin/edit/${id}`);
+    const handleManage = () => history.push(`/admin/edit/article/${id}`);
     const parseDate = () => {
-        var d = new Date(createDate);
+        var d = new Date(createdDate);
         return d.toLocaleString();
     };
     return (
@@ -30,4 +30,4 @@ const ManageItem = ({ content, files, createDate, id, deleteArticle }) => {
     );
 };
 
-export default ManageItem;
+export default ManageArticleItem;

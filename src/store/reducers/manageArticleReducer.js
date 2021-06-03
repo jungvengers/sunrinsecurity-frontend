@@ -1,11 +1,12 @@
 import { handleActions } from 'redux-actions';
 
-import * as actions from '../actions/manageAction';
+import * as actions from '../actions/manageArticleAction';
 import { reducerUtils } from '../../utils/lib/asyncUtils';
 
 const initialState = {
     articles: [],
     id: '',
+    title: '',
     participants: '',
     clubs: [],
     kinds: [],
@@ -20,7 +21,7 @@ const initialState = {
     updateArticle: reducerUtils.initial(),
 };
 
-const manage = handleActions(
+const manageArticle = handleActions(
     {
         [actions.INIT_ARTICLE]: (state, action) => ({
             ...state,
@@ -28,7 +29,7 @@ const manage = handleActions(
         }),
         [actions.REMOVE_ARTICLE]: (state, action) => ({
             ...state,
-            articles: state.articles.filter((article) => article._id != action.payload),
+            articles: state.articles.filter((article) => article._id !== action.payload),
         }),
         [actions.ADD_PARTICIPANT]: (state, action) => ({
             ...state,
@@ -133,4 +134,4 @@ const manage = handleActions(
     initialState
 );
 
-export default manage;
+export default manageArticle;

@@ -3,19 +3,21 @@ import { Form, Upload, message } from 'antd';
 
 import { InboxOutlined, CloudServerOutlined, DeleteOutlined } from '@ant-design/icons';
 
-import Header from '../Main/Header/Header';
-import Submit from './Submit/Submit';
-import Participant from '../Form/Input/Participant';
-import Club from '../Form/Input/Club';
-import Kind from '../Form/Input/Kind';
-import Category from '../Form/Input/Category';
-import Video from '../Form/Input/Video';
-import Content from '../Form/Input/Content';
+import Header from '../../Main/Header/Header';
+import ArticleSubmit from '../Submit/ArticleSubmit';
+import Participant from '../Input/Participant';
+import Club from '../Input/Club';
+import Kind from '../Input/Kind';
+import Category from '../Input/Category';
+import Video from '../Input/Video';
+import Content from '../Input/Content';
+import history from '../../../utils/lib/history';
+import validationToken from '../../../utils/lib/validationToken';
 
-import './EditForm.scss';
+import './EditArticle.scss';
 import { InfoCircleOutlined } from '@ant-design/icons';
 
-const EditForm = ({
+const EditArticle = ({
     match,
     id,
     participants,
@@ -39,8 +41,10 @@ const EditForm = ({
     changeContent,
 }) => {
     useEffect(() => {
+        if (!localStorage.getItem('accessToken')) history.push('/');
+        validationToken();
         readAnArticle(match.params.id);
-    }, []);
+    }, [readAnArticle, match.params.id]);
     const props = {
         fileList: files,
         beforeUpload: (file) => {
@@ -66,7 +70,7 @@ const EditForm = ({
         content,
     };
     return (
-        <div className="EditForm">
+        <div className="EditArticle">
             <Header />
             <div>
                 <Form layout="vertical" className="Input">
@@ -87,13 +91,13 @@ const EditForm = ({
                     </Form.Item>
                     <Form.Item label="업로드된 영상 링크 및 파일">
                         {uploadedFiles.map((filename) => (
-                            <div className="EditForm-uploaded-file">
+                            <div className="EditArticle-uploaded-file">
                                 <div>
                                     <CloudServerOutlined style={{ marginRight: '8px' }} />
                                     <span>{filename}</span>
                                 </div>
                                 <DeleteOutlined
-                                    className="EditForm-del-icon"
+                                    className="EditArticle-del-icon"
                                     onClick={() => removeUploadedImageFile(filename)}
                                 />
                             </div>
@@ -123,7 +127,7 @@ const EditForm = ({
                         <Video youtubeURLs={youtubeURLs} addYoutubeURL={addYoutubeURL} />
                     </Form.Item>
                 </Form>
-                <Submit
+                <ArticleSubmit
                     submitData={submitData}
                     participants={participants}
                     youtubeURLs={youtubeURLs}
@@ -134,4 +138,4 @@ const EditForm = ({
     );
 };
 
-export default EditForm;
+export default EditArticle;

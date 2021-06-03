@@ -8,7 +8,7 @@ function* loginSaga(action) {
         const res = yield call(authAPI.login, action.payload);
         yield put({ type: actions.INIT_USERNAME, payload: res.data.user.username });
         yield put({ type: actions.LOGIN_SUCCESS, error: false, payload: res });
-        yield (document.location.pathname = '/');
+        yield (document.location.pathname = '/article');
         yield localStorage.setItem('accessToken', res.data.token);
         yield localStorage.setItem('username', res.data.user.username);
     } catch (e) {

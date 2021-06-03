@@ -2,12 +2,17 @@ import React from 'react';
 import { Image } from 'antd';
 import YouTube from 'react-youtube';
 
-import './ArticleItem.scss';
+import { MEDIA_API_URL } from '../../../config/config';
+import { getYtpSize } from '../../../utils/lib/getYtpSize';
 
+import './ArticleItem.scss';
 import notFoundImage from '../../../assets/not-found-image.jpg';
 
 const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }) => {
+    let ytpSize = getYtpSize();
     let splittedFiles = { images: [], pdfs: [], zips: [] };
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+
     files.map((file) => {
         if (file.indexOf('.jpg') !== -1 || file.indexOf('.jpeg') !== -1 || file.indexOf('.png') !== -1)
             splittedFiles.images.push(file);
@@ -16,28 +21,28 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
     });
     files = splittedFiles;
 
-    const opts = {
-        height: '390',
-        width: '640',
-    };
+    const detectUrls = () => ({
+        __html: content.replaceAll(urlRegex, (url) => {
+            return `<a href="${url}" target="_blank">${url}</a>`;
+        }),
+    });
 
     return (
         <div className="ArticleItem">
-            <div className={files.images.length < 4 ? 'ArticleItem-images-few' : 'ArticleItem-images-lot'}>
-                {/* TODO 링크가 잘못된 경우가 아닌 이미지 가 없을때 예외처리 */}
-                <Image.PreviewGroup>
-                    {files.images.map((image, idx) => (
-                        <div key={idx} className="ArticleItem-image-wrapper">
-                            <Image
-                                src={`https://api.jungvengers.com/media/${image}`}
-                                fallback={notFoundImage}
-                            />
-                        </div>
-                    ))}
-                </Image.PreviewGroup>
-            </div>
+            {files.images.length > 0 ? (
+                <div
+                    className={files.images.length < 4 ? 'ArticleItem-images-few' : 'ArticleItem-images-lot'}>
+                    <Image.PreviewGroup>
+                        {files.images.map((image, idx) => (
+                            <div key={idx} className="ArticleItem-image-wrapper">
+                                <Image src={`${MEDIA_API_URL}/${image}`} fallback={notFoundImage} />
+                            </div>
+                        ))}
+                    </Image.PreviewGroup>
+                </div>
+            ) : null}
             <div className="ArticleItem-content">
-                <p>{content}</p>
+                <pre dangerouslySetInnerHTML={detectUrls()}></pre>
             </div>
             <div className="ArticleItem-detail-info">
                 <div className="ArticleItem-participants">
@@ -46,12 +51,14 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                         <li key={idx}>{name}</li>
                     ))}
                 </div>
-                <div className="ArticleItem-clubs">
-                    <h2>기여한 동아리</h2>
-                    {clubs.map((club, idx) => (
-                        <li key={idx}>{club}</li>
-                    ))}
-                </div>
+                {clubs.length > 0 && (
+                    <div className="ArticleItem-clubs">
+                        <h2>기여한 동아리</h2>
+                        {clubs.map((club, idx) => (
+                            <li key={idx}>{club}</li>
+                        ))}
+                    </div>
+                )}
                 <div className="ArticleItem-kinds">
                     <h2>분야</h2>
                     {kinds.map((kind, idx) => (
@@ -62,7 +69,7 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
             {youtubeURLs.length > 0 && (
                 <div className="ArticleItem-youtube">
                     {youtubeURLs.map((url, idx) => (
-                        <YouTube videoId={url} opts={opts} key={idx} />
+                        <YouTube videoId={url} opts={ytpSize} key={idx} />
                     ))}
                 </div>
             )}
@@ -70,9 +77,9 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                 {files.pdfs.length > 0 && (
                     <div className="ArticleItem-file-pdf">
                         pdf 파일:{' '}
-                        {files.pdfs.map((pdf) => (
-                            <a href={`https://api.jungvengers.com/media/${pdf}`} target="_blank">
-                                {pdf + ' '}
+                        {files.pdfs.map((pdf, idx) => (
+                            <a href={`${MEDIA_API_URL}/${pdf}`} target="_blank" rel="noreferrer" key={idx}>
+                                {pdf.split('-').splice(1).join('-') + ' '}
                             </a>
                         ))}
                     </div>
@@ -80,9 +87,9 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs }
                 {files.zips.length > 0 && (
                     <div className="ArticleItem-file-zip">
                         zip 파일:{' '}
-                        {files.zips.map((file) => (
-                            <a href={`https://api.jungvengers.com/media/${file}`} target="_blank">
-                                {file + ' '}
+                        {files.zips.map((zip, idx) => (
+                            <a href={`${MEDIA_API_URL}/${zip}`} target="_blank" rel="noreferrer" key={idx}>
+                                {zip.split('-').splice(1).join('-') + ' '}
                             </a>
                         ))}
                     </div>

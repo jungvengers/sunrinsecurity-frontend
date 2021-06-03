@@ -1,13 +1,16 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import * as actions from '../actions/manageAction';
+import * as actions from '../actions/manageArticleAction';
 import * as articleAPI from '../../utils/api/article';
 import * as formAPI from '../../utils/api/form';
 
-export function* readListArticlesSaga(action) {
+export function* readListArticleSaga(action) {
     try {
-        let result = yield call(articleAPI.readListArticles, action.payload);
-        yield (result = result.filter((article) => article.writer === localStorage.getItem('username')));
+        const { pages_length } = yield call(articleAPI.readListArticles, action.payload);
+        let result = yield call(articleAPI.readListArticles, { perPage: pages_length });
+        yield (result = result.articles.filter(
+            (article) => article.writer === localStorage.getItem('username')
+        ));
         yield put({ type: actions.INIT_ARTICLE, payload: result });
         yield put({ type: actions.READ_LIST_ARTICLE_SUCCESS, error: false, payload: result });
     } catch (error) {
@@ -55,14 +58,14 @@ export function* updateArticleSaga(action) {
         };
         const result = yield call(articleAPI.updateArticle, data);
         yield put({ type: actions.UPDATE_ARTICLE_SUCCESS, error: false, payload: result });
-        yield put((document.location.pathname = '/'));
+        yield put((document.location.pathname = '/article'));
     } catch (error) {
         yield put({ type: actions.UPDATE_ARTICLE_ERROR, error: true, payload: error });
     }
 }
 
-export function* manageSaga() {
-    yield takeEvery(actions.READ_LIST_ARTICLE_LOADING, readListArticlesSaga);
+export function* manageArticleSaga() {
+    yield takeEvery(actions.READ_LIST_ARTICLE_LOADING, readListArticleSaga);
     yield takeEvery(actions.READ_AN_ARTICLE_LOADING, readAnArticleSaga);
     yield takeEvery(actions.DELETE_ARTICLE_LOADING, deleteArticleSaga);
     yield takeEvery(actions.UPDATE_ARTICLE_LOADING, updateArticleSaga);

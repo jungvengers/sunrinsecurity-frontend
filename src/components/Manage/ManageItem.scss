@@ -1,8 +1,9 @@
-.EditItem {
-    .EditItem-date {
+.ManageItem {
+    width: 100%;
+    .ManageItem-date {
         margin-bottom: 15px;
     }
-    .EditItem-buttons {
+    .ManageItem-buttons {
         display: flex;
         justify-content: flex-end;
     }

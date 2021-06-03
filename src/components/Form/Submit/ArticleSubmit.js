@@ -3,16 +3,15 @@ import { Modal, Button } from 'antd';
 
 import { formValidation } from '../../../utils/lib/validationCheck';
 import { splitParticipants, splitYoutubeURLs } from '../../../utils/lib/splitString';
-import history from '../../../utils/lib/history';
 
 import './Submit.scss';
 
-const Submit = ({ submitData, participants, youtubeURLs, fetchArticle }) => {
+const ArticleSubmit = ({ submitData, participants, youtubeURLs, fetchArticle }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleClose = () => setIsModalVisible(false);
-    const handleCancel = () => (document.location.pathname = '/');
+    const handleCancel = () => (document.location.pathname = '/article');
     const handleSave = async () => {
         submitData.participants = splitParticipants(participants);
         submitData.youtubeURLs = splitYoutubeURLs(youtubeURLs);
@@ -48,4 +47,4 @@ const Submit = ({ submitData, participants, youtubeURLs, fetchArticle }) => {
     );
 };
 
-export default React.memo(Submit);
+export default React.memo(ArticleSubmit);

@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
-import Header from '../Main/Header/Header';
-import Input from './Input/Input';
-import Submit from './Submit/Submit';
+import Header from '../../Main/Header/Header';
+import Input from '../Input/Input';
+import ArticleSubmit from '../Submit/ArticleSubmit';
+import history from '../../../utils/lib/history';
+import validationToken from '../../../utils/lib/validationToken';
 
-import history from '../../utils/lib/history';
-import { splitParticipants, splitYoutubeURLs } from '../../utils/lib/splitString';
+import './UploadArticle.scss';
 
-import './UploadForm.scss';
-
-const UploadForm = ({
+const UploadArticle = ({
     isContestWork,
     participants,
     clubs,
@@ -34,9 +33,12 @@ const UploadForm = ({
         files: imageFiles,
         content,
     };
-    if (!localStorage.getItem('accessToken')) history.push('/');
+    useEffect(() => {
+        if (!localStorage.getItem('accessToken')) history.push('/');
+        validationToken();
+    }, []);
     return (
-        <div className="UploadForm">
+        <div className="UploadArticle">
             <Header />
             <div>
                 <Input
@@ -47,7 +49,6 @@ const UploadForm = ({
                     content={content}
                     imageFiles={imageFiles}
                     youtubeURLs={youtubeURLs}
-                    participants={participants}
                     toggleIsContestWork={toggleIsContestWork}
                     addClub={addClub}
                     addKind={addKind}
@@ -57,7 +58,7 @@ const UploadForm = ({
                     addParticipant={addParticipant}
                     addYoutubeURL={addYoutubeURL}
                 />
-                <Submit
+                <ArticleSubmit
                     submitData={submitData}
                     participants={participants}
                     youtubeURLs={youtubeURLs}
@@ -68,4 +69,4 @@ const UploadForm = ({
     );
 };
 
-export default UploadForm;
+export default UploadArticle;
