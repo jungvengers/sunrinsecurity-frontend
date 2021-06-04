@@ -6,4 +6,4 @@ export const ARTICLE_API_URL = 'https://api-sunrin.cdn.ntruss.com/article';
 
 export const NOTICEBOARD_API_URL = 'https://api-sunrin.cdn.ntruss.com/noticeboard';
 
-export const MEDIA_API_URL = 'https://kr.object.ncloudstorage.com/sunrin/media';
+export const MEDIA_API_URL = 'https://kr.object.ncloudstorage.com/sunrin';
