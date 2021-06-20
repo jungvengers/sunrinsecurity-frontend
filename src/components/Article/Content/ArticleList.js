@@ -3,11 +3,12 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { Spin, Card, Result } from 'antd';
 
 import ArticleItem from './ArticleItem';
+import Filters from '../Filter/Filter';
 
 import './ArticleList.scss';
 import { LoadingOutlined } from '@ant-design/icons';
 
-const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArticle, readMoreArticle }) => {
+const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArticle, readMoreArticle, handleToggleCategory, handleChangeClub, handleChangekind }) => {
     const [perPage, setPerPage] = useState(5);
     const [currentPage, setCurrentPage] = useState(1);
     useEffect(() => {
@@ -41,6 +42,12 @@ const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArti
                 next={getArticles}
                 hasMore={true}
                 scrollableTarget="scrollableDiv">
+                <Filters
+                    className="Filter"
+                    handleToggleCategory={handleToggleCategory}
+                    handleChangeClub={handleChangeClub}
+                    handleChangekind={handleChangekind}
+                />
                 {readingStatus.loading ? (
                     <Spin
                         indicator={<LoadingOutlined style={{ margin: '20 auto', fontSize: '50px' }} spin />}
@@ -60,6 +67,7 @@ const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArti
                                     participants={article.participants}
                                     youtubeURLs={article.youtubeURLs}
                                     id={article._id}
+                                    urls={article._id}
                                 />
                             </Card>
                         );

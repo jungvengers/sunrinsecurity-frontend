@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import Header from '../Main/Header/Header';
+import Header from '../Header/Header';
 import ManageNoticeList from './ManageNoticeList';
 import history from '../../utils/lib/history';
 import validationToken from '../../utils/lib/validationToken';

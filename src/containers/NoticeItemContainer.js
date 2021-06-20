@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import NoticeItem from '../components/Main/Content/NoticeItem';
+import NoticeItem from '../components/Notice/Content/NoticeItem';
 import { readAnNoticeAsync } from '../store/actions/noticeAction';
 
 const NoticeContainer = ({

@@ -3,7 +3,7 @@ import { Form, Upload, message } from 'antd';
 
 import { InboxOutlined, CloudServerOutlined, DeleteOutlined } from '@ant-design/icons';
 
-import Header from '../../Main/Header/Header';
+import Header from '../../Header/Header';
 import ArticleSubmit from '../Submit/ArticleSubmit';
 import Participant from '../Input/Participant';
 import Club from '../Input/Club';

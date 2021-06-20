@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Layout } from 'antd';
 
-import Side from './Side/Side';
-import Header from './Header/Header';
+import Header from '../Header/Header';
 import ArticleList from './Content/ArticleList';
 import validationToken from '../../utils/lib/validationToken';
 
@@ -11,24 +10,15 @@ const Article = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
     const [clubs, setClubs] = useState([]);
     const [kinds, setKinds] = useState([]);
 
-    const handleToggleCategory = (e) => setCategory(e.key);
-    const handleAddClub = (e) => setClubs(clubs.concat(e.key));
-    const handleDeleteClub = (e) => setClubs(clubs.filter((club) => club !== e.key));
-    const handleAddkind = (e) => setKinds(kinds.concat(e.key));
-    const handleDeleteKind = (e) => setKinds(kinds.filter((kind) => kind !== e.key));
+    const handleToggleCategory = (value) => setCategory(value);
+    const handleChangeClub = (value) => setClubs(value);
+    const handleChangekind = (value) => setKinds(value);
 
     useEffect(() => validationToken(), []);
     return (
         <Layout className="Article" style={{ height: '100vh' }}>
             <Header />
             <Layout style={{ height: '90%', overflow: 'hidden' }}>
-                <Side
-                    handleToggleCategory={handleToggleCategory}
-                    handleAddClub={handleAddClub}
-                    handleDeleteClub={handleDeleteClub}
-                    handleAddkind={handleAddkind}
-                    handleDeleteKind={handleDeleteKind}
-                />
                 <Layout.Content
                     className="site-layout-background"
                     style={{
@@ -45,6 +35,9 @@ const Article = ({ articles, readingStatus, readArticle, readMoreArticle }) => {
                         readingStatus={readingStatus}
                         readArticle={readArticle}
                         readMoreArticle={readMoreArticle}
+                        handleToggleCategory={handleToggleCategory}
+                        handleChangeClub={handleChangeClub}
+                        handleChangekind={handleChangekind}
                     />
                 </Layout.Content>
             </Layout>

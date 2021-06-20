@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Form } from 'antd';
 
-import Header from '../../Main/Header/Header';
+import Header from '../../Header/Header';
 import Submit from '../Submit/NoticeSubmit';
 import Title from '../Input/Title';
 import Content from '../Input/Content';

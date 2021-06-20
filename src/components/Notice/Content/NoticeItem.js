@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Spin, Image, PageHeader, Descriptions } from 'antd';
 import YouTube from 'react-youtube';
 
-import Header from '../Header/Header';
+import Header from '../../Header/Header';
 import history from '../../../utils/lib/history';
 import { MEDIA_API_URL } from '../../../config/config';
 import { getYtpSize } from '../../../utils/lib/getYtpSize';

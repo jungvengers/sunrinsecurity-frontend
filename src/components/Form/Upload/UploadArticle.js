@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import Header from '../../Main/Header/Header';
+import Header from '../../Header/Header';
 import Input from '../Input/Input';
 import ArticleSubmit from '../Submit/ArticleSubmit';
 import history from '../../../utils/lib/history';

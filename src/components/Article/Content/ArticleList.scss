@@ -1,0 +1,33 @@
+@import "../../../styles/mixin.scss";
+
+.ArticleItem {
+  display: flex;
+  .ArticleItem-images {
+    margin-right: 20px;
+    .image {
+      width: 200px;
+    }
+  }
+  .contents {
+    .ArticleItem-content {
+      font-size: 17px;
+      font-weight: bolder;
+      pre {
+        margin-bottom: 0;
+      }
+    }
+    .ArticleItem-participants {
+      display: flex;
+      color: gray;
+    }
+    .ArticleItem-file {
+      margin-top: 30px;
+      & a {
+        transition: all 0.3s;
+      }
+      & a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

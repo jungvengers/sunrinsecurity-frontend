@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Layout } from 'antd';
 
-import Header from './Header/Header';
+import Header from '../Header/Header';
 import NoticeList from './Content/NoticeList';
 import validationToken from '../../utils/lib/validationToken';
 
@@ -22,7 +22,6 @@ const Notice = ({ notices, readingStatus, readListNotice }) => {
                         fontSize: '1.5rem',
                         padding: 0,
                     }}>
-                    정보보호과 @ 2021 Created by 19학번 김연규, 조강연, 양원준
                 </Layout.Footer>
             </Layout>
         </Layout>
