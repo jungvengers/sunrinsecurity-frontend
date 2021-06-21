@@ -33,7 +33,7 @@ export default connect(
     // mapStateToProps
     ({ article }) => ({
         content: article.content,
-        files: article.images,
+        files: article.files, 
         youtubeURLs: article.youtubeURLs,
         participants: article.participants,
         clubs: article.clubs,
