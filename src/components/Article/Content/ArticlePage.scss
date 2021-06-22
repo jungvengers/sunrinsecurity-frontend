@@ -1,229 +1,86 @@
 @import "../../../styles/mixin.scss";
 
-.ArticleItem {
-  .ArticleItem-images-few {
-    margin: 0 auto;
-    .ArticleItem-image-wrapper {
-      display: none;
-      &:nth-child(1) {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
+.ArticlePage {
+  text-align: center;
+  .ArticlePage-wrapper {
+    border: 1px solid rgb(235, 237, 240);
+    margin: 30px auto 0 auto;
+    .ArticlePage-pre {
+      margin-bottom: 0;
+    }
+    .ArticlePage-content {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      .images {
+        width: 30%;
       }
-      img {
-        transition: transform 0.2s;
-        &:hover {
-          transform: scale(1.02);
+      .contents {
+        width: 65%;
+        pre {
+          width: 100%;
+          text-align: left;
+          white-space: pre-wrap;
+          font-family: inherit;
+          overflow-wrap: break-word;
         }
       }
     }
-  }
-  .ArticleItem-images-lot {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    .ArticleItem-image-wrapper {
-      display: none;
-      &:nth-child(1),
-      &:nth-child(2),
-      &:nth-child(3),
-      &:nth-child(4) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        background: #000;
-        margin: 2px;
+    .ArticlePage-youtube {
+      width: 100%;
+      .youtube-line {
+        border: 1px solid rgb(235, 237, 240);
       }
-      img {
-        transition: transform 0.2s;
-        &:hover {
-          transform: scale(1.05);
-        }
+      .youtube-slider {
+        width: 100%;
       }
     }
-  }
-  .ArticleItem-youtube {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 
-  .ArticleItem-content {
-    pre {
-      width: 100%;
-      text-align: left;
-      white-space: pre-wrap;
-      font-family: inherit;
-      overflow-wrap: break-word;
-    }
-  }
-  .ArticleItem-detail-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 40px 0 50px 0;
-    & > div {
-      text-align: center;
-    }
-  }
-  .ArticleItem-file {
-    margin-top: 20px;
-    & a {
-      transition: all 0.3s;
-    }
-    & a:hover {
-      text-decoration: underline;
-    }
-  }
   @include desktop {
     width: 100%;
-    .ArticleItem-images-few {
-      width: 100%;
-      margin: 0 auto;
-      .ArticleItem-image-wrapper {
-        &:nth-child(1) {
-          width: 70%;
-          height: 50vh;
-          min-height: 400px;
-          margin: 0 auto;
-        }
-        img {
-          width: 100%;
-        }
-      }
-    }
-    .ArticleItem-images-lot {
-      width: 100%;
-      .ArticleItem-image-wrapper {
-        &:nth-child(1),
-        &:nth-child(2),
-        &:nth-child(3),
-        &:nth-child(4) {
-          width: 49%;
-          height: 35vh;
-          margin: 1px;
-        }
-        img {
-          width: 100%;
-          height: auto;
-        }
-      }
-    }
-
-    .ArticleItem-content {
-      pre {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 2px;
-        font-size: 1.1rem;
-      }
-    }
-    .ArticleItem-detail-info {
-      margin: 40px 0 50px 0;
-      h2 {
-        font-size: 1.2rem;
-        font-weight: bold;
-      }
-    }
-    .ArticleItem-file {
-      margin-top: 20px;
+    .ArticlePage-wrapper {
+      width: 70%;
+      padding: 10px 40px;
+      min-width: 900px;
     }
   }
   @include tablet {
-    .ArticleItem-images-few {
-      .ArticleItem-image-wrapper {
-        &:nth-child(1) {
-          width: 100%;
-          height: 30vh;
-          min-height: 200px;
-        }
-      }
-    }
-    .ArticleItem-images-lot {
-      .ArticleItem-image-wrapper {
-        display: none;
-        &:nth-child(1),
-        &:nth-child(2),
-        &:nth-child(3),
-        &:nth-child(4) {
-          width: 49%;
-          height: 20vh;
-        }
-      }
-    }
-    .ArticleItem-content {
-      pre {
-        width: 100%;
-        margin: 7px 0 20px 0;
-        text-align: justify;
-        font-size: 1.2rem;
-      }
-    }
-    .ArticleItem-detail-info {
-      margin: 10px 0 15px 0;
-      & > div {
-        text-align: center;
-        h2 {
-          font-size: 1.5rem;
-        }
-        li {
-          font-size: 1rem;
-        }
-      }
-    }
-    .ArticleItem-file {
-      margin-top: 10px;
+    width: 100%;
+    .ArticlePage-wrapper {
+      width: 80%;
+      padding: 10px 20px;
+      min-width: 500px;
     }
   }
   @include mobile {
-    .ArticleItem-images-few {
-      .ArticleItem-image-wrapper {
-        &:nth-child(1) {
-          width: 100%;
-          height: 25vh;
-          min-height: 50px;
+    width: 100%;
+    .ArticlePage-wrapper {
+      width: 90%;
+      padding: 10px 10px;
+      min-width: 250px;
+      .ant-page-header {
+        padding: 10px 0 5px 0;
+        .ant-page-header-heading {
+          .ant-page-header-heading-left {
+            .ant-page-header-back {
+              margin-right: 7px;
+              .ant-page-header-back-button {
+                display: flex !important;
+              }
+            }
+            span {
+              font-size: 1.6rem;
+            }
+          }
+        }
+        .ant-page-header-content {
+          padding-top: 0;
+          & * {
+            font-size: 1.3rem;
+          }
         }
       }
-    }
-    .ArticleItem-images-lot {
-      .ArticleItem-image-wrapper {
-        display: none;
-        &:nth-child(1),
-        &:nth-child(2),
-        &:nth-child(3),
-        &:nth-child(4) {
-          width: 48%;
-          height: 13vh;
-        }
-      }
-    }
-    .ArticleItem-content {
-      pre {
-        width: 100%;
-        margin: 7px 0;
-        font-size: 1.1rem;
-      }
-    }
-    .ArticleItem-detail-info {
-      margin: 10px 0 15px 0;
-      & > div {
-        text-align: center;
-        h2 {
-          font-size: 1.2rem;
-          font-weight: bold;
-        }
-        li {
-          font-size: 1rem;
-        }
-      }
-    }
-    .ArticleItem-file {
-      margin-top: 10px;
-      font-size: 0.9rem;
     }
   }
 }
