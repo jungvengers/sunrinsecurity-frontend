@@ -5,8 +5,7 @@ import { InboxOutlined, CloudServerOutlined, DeleteOutlined } from '@ant-design/
 
 import Header from '../../Header/Header';
 import NoticeSubmit from '../Submit/NoticeSubmit';
-import Title from '../Input/Title';
-import Video from '../Input/Video';
+import TextField from '../Input/TextField';
 import Content from '../Input/Content';
 import history from '../../../utils/lib/history';
 import validationToken from '../../../utils/lib/validationToken';
@@ -64,7 +63,12 @@ const EditArticle = ({
             <div>
                 <Form layout="vertical" className="Input">
                     <Form.Item label="제목">
-                        <Title title={title} changeTitle={changeTitle} />
+                        <TextField
+                            state={title}
+                            setState={changeTitle}
+                            kind="title"
+                            placeholder="제목을 입력해주세요."
+                        />
                     </Form.Item>
                     <Form.Item label="내용">
                         <Content content={content} changeContent={changeContent} />
@@ -104,7 +108,12 @@ const EditArticle = ({
                             title: '유튜브 영상의 고유번호를 입력해주세요.',
                             icon: <InfoCircleOutlined />,
                         }}>
-                        <Video youtubeURLs={youtubeURLs} addYoutubeURL={addYoutubeURL} />
+                        <TextField
+                            state={youtubeURLs}
+                            setState={addYoutubeURL}
+                            kind="video"
+                            placeholder="링크1 링크2 링크3"
+                        />
                     </Form.Item>
                 </Form>
                 <NoticeSubmit submitData={submitData} youtubeURLs={youtubeURLs} fetchArticle={updateNotice} />
