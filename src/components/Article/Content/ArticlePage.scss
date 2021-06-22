@@ -1,70 +1,85 @@
 @import "../../../styles/mixin.scss";
 
-body {
-  overflow: hidden;
-}
-
-.PageContents {
-  width: 100%;
-  padding: 30px;
-  display: flex;
-  justify-content: space-between;
-  .content {
-    width: 70%;
-    pre {
-      height: 47%;
-      white-space: pre-wrap;
-      overflow: auto;
-      word-break: break-all;
+.ArticlePage {
+  text-align: center;
+  .ArticlePage-wrapper {
+    border: 1px solid rgb(235, 237, 240);
+    margin: 30px auto 0 auto;
+    .ArticlePage-pre {
+      margin-bottom: 0;
     }
-  }
-  .image {
-    .swiper-container {
-      padding-top: 0;
-      width: 500px;
-      height: 280px;
+    .ArticlePage-content {
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      .images {
+        width: 30%;
+      }
+      .contents {
+        width: 65%;
+        pre {
+          width: 100%;
+          text-align: left;
+          white-space: pre-wrap;
+          font-family: inherit;
+          overflow-wrap: break-word;
+        }
+      }
     }
-
-    .swiper-slide {
-      width: 500px;
-      height: 280px;
-      overflow: hidden;
-    }
-
-    img {
+    .ArticlePage-youtube {
       width: 100%;
-      object-fit: cover;
+      .youtube-line {
+        border: 1px solid rgb(235, 237, 240);
+      }
+      .youtube-slider {
+        width: 100%;
+      }
     }
   }
+
   @include desktop {
-    .content {
-      width: 60%;
-    }
-    .image {
-      img {
-        width: 500px;
-      }
+    width: 100%;
+    .ArticlePage-wrapper {
+      width: 70%;
+      padding: 10px 40px;
+      min-width: 900px;
     }
   }
-
   @include tablet {
-    .content {
-      width: 50%;
-    }
-    .image {
-      img {
-        width: 360px;
-      }
+    width: 100%;
+    .ArticlePage-wrapper {
+      width: 80%;
+      padding: 10px 20px;
+      min-width: 500px;
     }
   }
-
   @include mobile {
-    .content {
-      width: 40%;
-    }
-    .image {
-      img {
-        width: 170px;
+    width: 100%;
+    .ArticlePage-wrapper {
+      width: 90%;
+      padding: 10px 10px;
+      min-width: 250px;
+      .ant-page-header {
+        padding: 10px 0 5px 0;
+        .ant-page-header-heading {
+          .ant-page-header-heading-left {
+            .ant-page-header-back {
+              margin-right: 7px;
+              .ant-page-header-back-button {
+                display: flex !important;
+              }
+            }
+            span {
+              font-size: 1.6rem;
+            }
+          }
+        }
+        .ant-page-header-content {
+          padding-top: 0;
+          & * {
+            font-size: 1.3rem;
+          }
+        }
       }
     }
   }

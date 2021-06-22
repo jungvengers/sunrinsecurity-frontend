@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Image } from 'antd';
+import React, { useEffect } from 'react';
+import { Spin, Image, PageHeader, Descriptions } from 'antd';
 import YouTube from 'react-youtube';
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { getYtpSize } from '../../../utils/lib/getYtpSize';
-import { MEDIA_API_URL } from '../../../config/config';
-import notFoundImage from '../../../assets/not-found-image.jpg';
-
 import Header from '../../Header/Header';
+import history from '../../../utils/lib/history';
+import { MEDIA_API_URL } from '../../../config/config';
+import { getYtpSize } from '../../../utils/lib/getYtpSize';
+
 import './ArticlePage.scss';
+import notFoundImage from '../../../assets/not-found-image.jpg';
 
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css"
@@ -53,26 +54,59 @@ const ArticleItemPage = ({
     }, []);
 
     return (
-        <div className="">
+        <div className="ArticlePage">
             <Header/>
-            <div className="Page">
-                <div className="PageContainer">
-                    <div className="PageContents">
-                        <div className="image">
-                            <Swiper pagination={true} className="Slider">
-                                {files.images.map((image, idx) => (
-                                    <SwiperSlide><img src={`${MEDIA_API_URL}/${image}`}/></SwiperSlide>
-                                ))}
-                            </Swiper>
-                        </div>
-                        <div className="content">
-                            <div>
-                                
+            <div className="ArticlePage-wrapper">
+                <PageHeader
+                    style={{ borderBottom: '1px solid #ebedf0' }}
+                    ellipsis={false}
+                    onBack={() => history.push('/article')}
+                    title={content}>
+                    <Descriptions size="small" column={3}>
+                        <Descriptions.Item label="참가자">
+                            {participants.map((name, idx) => (<pre className="ArticlePage-pre" id={idx}>{name} </pre>))}
+                        </Descriptions.Item>
+                        <Descriptions.Item label="기여한 동아리">
+                            {files.images.length > 0 ? ({clubs}) : (<pre>없음</pre>)}
+                        </Descriptions.Item>
+                        <Descriptions.Item label="분야">{kinds}</Descriptions.Item>
+                    </Descriptions>
+                </PageHeader>
+                <div className="ArticlePage-content">
+                    <div className="images">
+                        {files.images.length > 0 ? (
+                            <div
+                                className={
+                                    files.images.length < 4 ? 'NoticeItem-images-few' : 'NoticeItem-images-lot'
+                                }>
+                                <Image.PreviewGroup>
+                                    <Swiper pagination={true} className="Slider">
+                                        {files.images.map((image, idx) => (
+                                            <SwiperSlide>
+                                                <div key={idx} className="NoticeItem-image-wrapper">
+                                                    <Image src={`${MEDIA_API_URL}/${image}`} />
+                                                </div>
+                                            </SwiperSlide>
+                                        ))}
+                                    </Swiper>
+                                </Image.PreviewGroup>
                             </div>
-                            <pre dangerouslySetInnerHTML={detectUrls()}></pre>
-                        </div>
+                        ) : <Image src={notFoundImage} />}
+                    </div>
+                    <div className="contents">
+                        <pre dangerouslySetInnerHTML={detectUrls()}></pre>
                     </div>
                 </div>
+                {youtubeURLs.length > 0 && (
+                    <div className="ArticlePage-youtube">
+                        <hr className="youtube-line" />
+                        <Swiper navigation={true} className="youtube-slider">
+                            {youtubeURLs.map((url, idx) => (
+                                <SwiperSlide><YouTube videoId={url} opts={ytpSize} key={idx} /></SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                )}
             </div>
         </div>
     );
