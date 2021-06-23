@@ -60,8 +60,10 @@ const ArticleList = ({ articles, category, clubs, kinds, readingStatus, readArti
                                 style={{ width: '100%', textAlign: 'left', marginTop: '15px' }}
                                 key={article._id}>
                                 <ArticleItem
+                                    title={article.title}
                                     clubs={article.clubs}
                                     content={article.content}
+                                    thumbnail={article.thumbnail}
                                     files={article.images}
                                     kinds={article.kinds}
                                     participants={article.participants}

@@ -13,12 +13,19 @@
       font-size: 17px;
       font-weight: bolder;
       pre {
-        margin-bottom: 0;
+        margin-bottom: 10px;
       }
     }
-    .ArticleItem-participants {
+    .ArticleItem-info {
       display: flex;
+      flex-direction: column;
       color: gray;
+      .ArticleItem-pre {
+        display: flex;
+        pre {
+          margin-bottom: 0;
+        }
+      }
     }
     .ArticleItem-file {
       margin-top: 30px;

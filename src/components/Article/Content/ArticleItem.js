@@ -6,7 +6,7 @@ import { MEDIA_API_URL } from '../../../config/config';
 import './ArticleItem.scss';
 import notFoundImage from '../../../assets/not-found-image.jpg';
 
-const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs, urls }) => {
+const ArticleItem = ({ title, clubs, content, thumbnail, files, kinds, participants, youtubeURLs, urls }) => {
     let splittedFiles = { images: [], pdfs: [], zips: [] };
     const urlRegex = /(https?:\/\/[^\s]+)/g;
 
@@ -24,27 +24,35 @@ const ArticleItem = ({ clubs, content, files, kinds, participants, youtubeURLs, 
         }),
     });
 
-    const handleImgError = (e) => {
-        e.target.src = {notFoundImage};
-    }
-
     return (
         <div className="ArticleItem" onClick={() => { history.push({
             pathname: `/article/${urls}`,
             state: {id: urls}
           }); }}>
             <div className="ArticleItem-images">
-                <img className="image" src={files.images[0] != null ? `${MEDIA_API_URL}/${files.images[0]}` : `${notFoundImage}`} />
+                <img className="image" src={thumbnail != "" ? `${MEDIA_API_URL}/${thumbnail}` : `${notFoundImage}`} />
             </div>
             <div className="contents">
                 <div className="ArticleItem-content">
-                    <pre dangerouslySetInnerHTML={detectUrls()}></pre>
+                    <pre>{title}</pre>
                 </div>
-                <div className="ArticleItem-participants">
-                    <pre>참가자: </pre>
-                    {participants.map((name, idx) => (
-                        <pre id={idx}>{name} </pre>
-                    ))}
+                <div className="ArticleItem-info">
+                    <div className="ArticleItem-pre">
+                        <pre>참가자: </pre>
+                        {participants.map((name, idx) => (
+                            <pre id={idx}>{name} </pre>
+                        ))}
+                    </div>
+                    <div className="ArticleItem-pre">
+                        <pre>참여동아리: </pre>
+                        {clubs.length > 0 ? (clubs.map((name, idx) => (<pre className="ArticlePage-pre" id={idx}>{name} </pre>))) : (<pre>없음</pre>)}
+                    </div>
+                    <div className="ArticleItem-pre">
+                        <pre>분야: </pre>
+                        {kinds.map((name, idx) => (
+                            <pre id={idx}>{name} </pre>
+                        ))}
+                    </div>
                 </div>
                 <div className="ArticleItem-file">
                     {files.pdfs.length > 0 && (

@@ -22,6 +22,7 @@ SwiperCore.use([Navigation, Pagination]);
 
 const ArticleItemPage = ({
     match,
+    title,
     participants,
     clubs,
     kinds,
@@ -61,13 +62,13 @@ const ArticleItemPage = ({
                     style={{ borderBottom: '1px solid #ebedf0' }}
                     ellipsis={false}
                     onBack={() => history.push('/article')}
-                    title={content}>
+                    title={title}>
                     <Descriptions size="small" column={3}>
                         <Descriptions.Item label="참가자">
                             {participants.map((name, idx) => (<pre className="ArticlePage-pre" id={idx}>{name} </pre>))}
                         </Descriptions.Item>
                         <Descriptions.Item label="기여한 동아리">
-                            {files.images.length > 0 ? ({clubs}) : (<pre>없음</pre>)}
+                            {clubs.length > 0 ? (clubs.map((name, idx) => (<pre className="ArticlePage-pre" id={idx}>{name} </pre>))) : (<pre>없음</pre>)}
                         </Descriptions.Item>
                         <Descriptions.Item label="분야">{kinds}</Descriptions.Item>
                     </Descriptions>
