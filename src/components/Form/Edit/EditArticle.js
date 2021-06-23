@@ -5,11 +5,10 @@ import { InboxOutlined, CloudServerOutlined, DeleteOutlined } from '@ant-design/
 
 import Header from '../../Header/Header';
 import ArticleSubmit from '../Submit/ArticleSubmit';
-import Participant from '../Input/Participant';
+import TextField from '../Input/TextField';
 import Club from '../Input/Club';
 import Kind from '../Input/Kind';
 import Category from '../Input/Category';
-import Video from '../Input/Video';
 import Content from '../Input/Content';
 import history from '../../../utils/lib/history';
 import validationToken from '../../../utils/lib/validationToken';
@@ -75,7 +74,12 @@ const EditArticle = ({
             <div>
                 <Form layout="vertical" className="Input">
                     <Form.Item label="참여자">
-                        <Participant participants={participants} addParticipant={addParticipant} />
+                        <TextField
+                            state={participants}
+                            setState={addParticipant}
+                            kind="participants"
+                            placeholder="김선린 이선린 박선린"
+                        />
                     </Form.Item>
                     <Form.Item label="소속">
                         <Club clubs={clubs} addClub={addClub} />
@@ -124,7 +128,12 @@ const EditArticle = ({
                             title: '유튜브 영상의 고유번호를 입력해주세요.',
                             icon: <InfoCircleOutlined />,
                         }}>
-                        <Video youtubeURLs={youtubeURLs} addYoutubeURL={addYoutubeURL} />
+                        <TextField
+                            state={youtubeURLs}
+                            setState={addYoutubeURL}
+                            kind="video"
+                            placeholder="링크1 링크2 링크3"
+                        />
                     </Form.Item>
                 </Form>
                 <ArticleSubmit

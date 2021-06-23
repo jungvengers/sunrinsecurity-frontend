@@ -15,7 +15,8 @@ export const ADD_KIND = 'upload/ADD_KIND';
 export const TOGGLE_IS_CONTEST_WORK = 'upload/TOGGLE_CATEGORY';
 export const ADD_IMAGE_FILE = 'upload/ADD_IMAGE_FILE';
 export const REMOVE_IMAGE_FILE = 'upload/REMOVE_IMAGE_FILE';
-export const ADD_IMAGE_NAME = 'upload/ADD_IMAGE_NAME';
+export const ADD_THUMBNAIL_FILE = 'upload/ADD_THUMBNAIL_FILE';
+export const REMOVE_THUMBNAIL_FILE = 'upload/REMOVE_THUMBNAIL_FILE';
 export const ADD_YOUTUBE_URLS = 'upload/YOUTUBE_URLS';
 export const CHANGE_CONTENT = 'upload/CHANGE_CONTENT';
 
@@ -28,5 +29,7 @@ export const addKind = createAction(ADD_KIND, (input) => input);
 export const toggleIsContestWork = createAction(TOGGLE_IS_CONTEST_WORK, (input) => input);
 export const addImageFile = createAction(ADD_IMAGE_FILE, (input) => input);
 export const removeImageFile = createAction(REMOVE_IMAGE_FILE, (input) => input);
+export const addThumbnailFile = createAction(ADD_THUMBNAIL_FILE, (input) => input);
+export const removeThumbnailFile = createAction(REMOVE_THUMBNAIL_FILE, (input) => input);
 export const addYoutubeURL = createAction(ADD_YOUTUBE_URLS, (input) => input);
 export const changeContent = createAction(CHANGE_CONTENT, (input) => input);
