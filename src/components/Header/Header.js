@@ -4,7 +4,7 @@ import { Layout, Menu } from 'antd';
 
 import './Header.scss';
 
-import { SettingOutlined, ProjectOutlined, NotificationOutlined } from '@ant-design/icons';
+import { SettingOutlined, ProjectOutlined, NotificationOutlined, SoundOutlined, PaperClipOutlined } from '@ant-design/icons';
 
 const Header = () => {
     const handleLogout = () => {
@@ -28,10 +28,23 @@ const Header = () => {
                                 <Link to="/notice">개발자 소개</Link>
                             </Menu.Item>
                         </Menu.SubMenu>
-                        <Menu.Item key="2">
-                           <Link to="/admin">관리자 페이지</Link>
-                        </Menu.Item>
-                        <Menu.Item key="3" onClick={handleLogout}>
+                        <Menu.SubMenu key="2" title="글 작성">
+                            <Menu.Item key="write:1" icon={<SoundOutlined />}>
+                                <Link to="/admin/form/article">프로젝트</Link>
+                            </Menu.Item>
+                            <Menu.Item key="write:2" icon={<PaperClipOutlined />}>
+                                <Link to="/admin/form/notice">학과 소식</Link>
+                            </Menu.Item>
+                        </Menu.SubMenu>
+                        <Menu.SubMenu key="3" title="글 관리">
+                            <Menu.Item key="manage:1" icon={<SoundOutlined />}>
+                                <Link to="/admin/article">프로젝트</Link>
+                            </Menu.Item>
+                            <Menu.Item key="manage:2" icon={<PaperClipOutlined />}>
+                                <Link to="/admin/notice">학과 소식</Link>
+                            </Menu.Item>
+                        </Menu.SubMenu>
+                        <Menu.Item key="4" onClick={handleLogout}>
                             로그아웃
                         </Menu.Item>
                     </>
