@@ -5,6 +5,7 @@ import { readAnArticleAsync } from '../store/actions/articleAction';
 
 const ArticlePageContainer = ({
     match,
+    title,
     participants,
     clubs,
     kinds,
@@ -17,6 +18,7 @@ const ArticlePageContainer = ({
     return (
         <ArticlePage
             match={match}
+            title={title}
             participants={participants}
             clubs={clubs}
             kinds={kinds}
@@ -32,6 +34,7 @@ const ArticlePageContainer = ({
 export default connect(
     // mapStateToProps
     ({ article }) => ({
+        title: article.title,
         content: article.content,
         files: article.files, 
         youtubeURLs: article.youtubeURLs,

@@ -4,6 +4,7 @@ import * as actions from '../actions/articleAction';
 import { reducerUtils } from '../../utils/lib/asyncUtils';
 
 const initialState = {
+    title: '',
     articles: [],
     content: '',
     files: [],
@@ -49,6 +50,7 @@ const article = handleActions(
         }),
         [actions.READ_AN_ARTICLE_SUCCESS]: (state, action) => ({
             ...state,
+            title: action.payload.title,
             content: action.payload.content,
             files: action.payload.images,
             youtubeURLs: action.payload.youtubeURLs,
