@@ -7,12 +7,12 @@ export const getYtpSize = () => {
         };
     else if (758 <= screenX && screenX < 1031)
         return {
-            width: '400',
-            height: '250',
+            width: '360',
+            height: '219',
         };
     else if (1031 <= screenX)
         return {
-            width: '640',
-            height: '390',
+            width: '500',
+            height: '305',
         };
 };

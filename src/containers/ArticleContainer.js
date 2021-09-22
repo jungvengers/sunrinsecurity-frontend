@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Article from '../components/Main/Article';
+import Article from '../components/Article/Article';
 import { readArticleAsync, readMoreArticleAsync } from '../store/actions/articleAction';
 
 const ArticleContainer = ({ articles, readArticle, readArticleAsync, readMoreArticleAsync }) => {

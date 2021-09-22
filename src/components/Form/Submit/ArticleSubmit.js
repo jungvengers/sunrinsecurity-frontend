@@ -6,9 +6,8 @@ import { splitParticipants, splitYoutubeURLs } from '../../../utils/lib/splitStr
 
 import './Submit.scss';
 
-const ArticleSubmit = ({ submitData, participants, youtubeURLs, fetchArticle }) => {
+const ArticleSubmit = ({ submitData, uploadArticleStatus, participants, youtubeURLs, fetchArticle }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
 
     const handleClose = () => setIsModalVisible(false);
     const handleCancel = () => (document.location.pathname = '/article');
@@ -16,22 +15,23 @@ const ArticleSubmit = ({ submitData, participants, youtubeURLs, fetchArticle }) 
         submitData.participants = splitParticipants(participants);
         submitData.youtubeURLs = splitYoutubeURLs(youtubeURLs);
         const [result, missingFieldName] = formValidation(submitData, [
+            'title',
             'participants',
             'kinds',
             'isContestWork',
+            'thumbnail',
             'content',
         ]);
-        if (result) {
-            setIsLoading(true);
-            fetchArticle(submitData);
-        } else {
+
+        if (result) fetchArticle(submitData);
+        else
             Modal.warning({
                 title: '모든 양식을 채워주세요.',
                 content: `${missingFieldName} 칸을(를) 채워주세요.`,
             });
-        }
     };
 
+    console.log(uploadArticleStatus);
     return (
         <div className="Submit">
             <Modal title="양식 미작성" visible={isModalVisible} onOk={handleClose} onCancel={handleClose}>
@@ -40,7 +40,7 @@ const ArticleSubmit = ({ submitData, participants, youtubeURLs, fetchArticle }) 
             <Button type="primary" onClick={handleCancel} danger>
                 취소
             </Button>
-            <Button type="primary" loading={isLoading} onClick={handleSave}>
+            <Button type="primary" loading={uploadArticleStatus.loading} onClick={handleSave}>
                 저장
             </Button>
         </div>

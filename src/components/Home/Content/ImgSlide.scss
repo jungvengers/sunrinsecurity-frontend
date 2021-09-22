@@ -1,0 +1,15 @@
+.Slide {
+  margin-bottom: 20px;
+  .imgContent {
+    background-color: #364d79;
+    max-height: 500px;
+    .img {
+      height: 500px;
+      object-fit: "cover";
+      display: block;
+      margin: auto;
+      max-width: initial;
+      margin-top: -10%;
+    }
+  }
+}

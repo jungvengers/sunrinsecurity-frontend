@@ -10,6 +10,7 @@ const initialState = {
     kinds: [],
     isContestWork: null,
     imageFiles: [],
+    thumbnail: null,
     youtubeURLs: [],
     content: '',
     uploadArticle: reducerUtils.initial(),
@@ -44,6 +45,14 @@ const form = handleActions(
         [actions.REMOVE_IMAGE_FILE]: (state, action) => ({
             ...state,
             imageFiles: state.imageFiles.filter((imageFile) => imageFile.name !== action.payload.name),
+        }),
+        [actions.ADD_THUMBNAIL_FILE]: (state, action) => ({
+            ...state,
+            thumbnail: action.payload,
+        }),
+        [actions.REMOVE_THUMBNAIL_FILE]: (state, action) => ({
+            ...state,
+            thumbnail: null,
         }),
         [actions.ADD_YOUTUBE_URLS]: (state, action) => ({
             ...state,

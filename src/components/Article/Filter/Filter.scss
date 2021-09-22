@@ -1,0 +1,24 @@
+@import "../../../styles/mixin.scss";
+
+.filter-base {
+  padding-top: 15px;
+  .filter {
+    display: flex;
+  }
+
+  @include desktop {
+    .filter {
+      width: 70%;
+    }
+  }
+  @include tablet {
+    .filter {
+      width: 85%;
+    }
+  }
+  @include mobile {
+    .filter {
+      width: 95%;
+    }
+  }
+}
