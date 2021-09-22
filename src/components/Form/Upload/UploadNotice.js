@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { Form } from 'antd';
 
-import Header from '../../Main/Header/Header';
+import Header from '../../Header/Header';
 import Submit from '../Submit/NoticeSubmit';
-import Title from '../Input/Title';
+import TextField from '../Input/TextField';
 import Content from '../Input/Content';
 import File from '../Input/File';
-import Video from '../Input/Video';
 import history from '../../../utils/lib/history';
 import validationToken from '../../../utils/lib/validationToken';
 
@@ -40,10 +39,12 @@ const UploadNotice = ({
             <div>
                 <Form layout="vertical" className="Input">
                     <Form.Item label="제목">
-                        <Title title={title} changeTitle={changeTitle} />
-                    </Form.Item>
-                    <Form.Item label="내용">
-                        <Content content={content} changeContent={changeContent} />
+                        <TextField
+                            state={title}
+                            setState={changeTitle}
+                            kind="title"
+                            placeholder="제목을 입력해주세요."
+                        />
                     </Form.Item>
                     <Form.Item label="파일">
                         <File
@@ -58,7 +59,15 @@ const UploadNotice = ({
                             title: '유튜브 영상의 링크를 작성해주세요.',
                             icon: <InfoCircleOutlined />,
                         }}>
-                        <Video youtubeURLs={youtubeURLs} addYoutubeURL={addYoutubeURL} />
+                        <TextField
+                            state={youtubeURLs}
+                            setState={addYoutubeURL}
+                            kind="video"
+                            placeholder="링크1 링크2 링크3"
+                        />
+                    </Form.Item>
+                    <Form.Item label="내용">
+                        <Content content={content} changeContent={changeContent} />
                     </Form.Item>
                 </Form>
                 <Submit submitData={submitData} youtubeURLs={youtubeURLs} fetchArticle={uploadNotice} />

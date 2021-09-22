@@ -12,6 +12,8 @@ const convertToFieldName = (key) => {
             return '카테고리';
         case 'imageFiles':
             return '파일';
+        case 'thumbnail':
+            return '썸네일';
         case 'youtubeURLs':
             return '영상';
         case 'content':
