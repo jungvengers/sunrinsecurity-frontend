@@ -57,7 +57,7 @@ const NoticeItem = ({
                     <PageHeader
                         style={{ borderBottom: '1px solid #ebedf0' }}
                         ellipsis={false}
-                        onBack={() => history.push('/notice')}
+                        onBack={() => history.goBack()}
                         title={title}>
                         <Descriptions size="small" column={3}>
                             <Descriptions.Item label="작성자">{writer}</Descriptions.Item>
