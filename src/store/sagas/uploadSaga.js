@@ -5,14 +5,17 @@ import * as formAPI from '../../utils/api/form';
 
 export function* uploadArticleSaga(action) {
     try {
+        const thumbnail = yield call(formAPI.uploadThumbnail, action.payload.thumbnail);
         const images = yield call(formAPI.uploadImages, action.payload.files);
         const data = yield {
+            title: action.payload.title,
             isContestWork: action.payload.isContestWork,
             participants: action.payload.participants,
             clubs: action.payload.clubs,
             content: action.payload.content,
             kinds: action.payload.kinds,
             images,
+            thumbnail,
             youtubeURLs: action.payload.youtubeURLs,
         };
         const result = yield call(formAPI.uploadArticle, data);
