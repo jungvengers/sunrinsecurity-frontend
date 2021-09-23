@@ -9,10 +9,13 @@ import EditNoticeContainer from './containers/EditNoticeContainer';
 import UploadNoticeContainer from './containers/UploadNoticeContainer';
 import UploadArticleContainer from './containers/UploadArticleContainer';
 import ArticleContainer from './containers/ArticleContainer';
+import ArticlePageContainer from './containers/ArticlePageContainer';
 import NoticeContainer from './containers/NoticeContainer';
 import NoticeItemContainer from './containers/NoticeItemContainer';
 import LoginContainer from './containers/LoginContainer';
 import RegisterContainer from './containers/RegisterContainer';
+import HomeContainer from './containers/HomeContainer';
+import CirclesContainer from './containers/CirclesContainer';
 
 import history from './utils/lib/history';
 
@@ -23,8 +26,10 @@ const App = () => {
     return (
         <Router history={history}>
             <Switch>
-                <Route exact path="/" component={ArticleContainer} />
+                <Route exact path="/" component={HomeContainer} />
+                <Route exact path="/circles" component={CirclesContainer} />
                 <Route exact path="/article" component={ArticleContainer} />
+                <Route exact path="/article/:id" component={ArticlePageContainer} />
                 <Route exact path="/notice" component={NoticeContainer} />
                 <Route exact path="/notice/:id" component={NoticeItemContainer} />
                 <Route exact path="/login" component={LoginContainer} />

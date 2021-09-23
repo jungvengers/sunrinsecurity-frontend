@@ -7,3 +7,4 @@ export const ARTICLE_API_URL = 'https://api.sunrinsecurity.com/article';
 export const NOTICEBOARD_API_URL = 'https://api.sunrinsecurity.com/noticeboard';
 
 export const MEDIA_API_URL = 'https://kr.object.ncloudstorage.com/sunrin';
+export const MEDIA_UPLOAD_API_URL = 'https://api.sunrinsecurity.com/media';
